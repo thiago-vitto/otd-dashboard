@@ -1,0 +1,428 @@
+<title>Dashboard OTD — Expedição</title>
+<style>
+  .viz-root {
+    color-scheme: light;
+    --page:        #f9f9f7;
+    --surface:     #fcfcfb;
+    --ink:         #0b0b0b;
+    --ink-soft:    #52514e;
+    --muted:       #898781;
+    --grid:        #e1e0d9;
+    --baseline:    #c3c2b7;
+    --border:      rgba(11,11,11,0.10);
+    --accent:      #2a78d6;
+    --accent-soft: #cde2fb;
+    --good:        #0ca30c;
+    --good-text:   #006300;
+    --warning:     #fab219;
+    --serious:     #ec835a;
+    --critical:    #d03b3b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) .viz-root {
+      color-scheme: dark;
+      --page:        #0d0d0d;
+      --surface:     #1a1a19;
+      --ink:         #ffffff;
+      --ink-soft:    #c3c2b7;
+      --muted:       #898781;
+      --grid:        #2c2c2a;
+      --baseline:    #383835;
+      --border:      rgba(255,255,255,0.10);
+      --accent:      #3987e5;
+      --accent-soft: #16324f;
+      --good:        #0ca30c;
+      --good-text:   #0ca30c;
+      --warning:     #fab219;
+      --serious:     #ec835a;
+      --critical:    #e66767;
+    }
+  }
+  :root[data-theme="dark"] .viz-root {
+    color-scheme: dark;
+    --page:        #0d0d0d;
+    --surface:     #1a1a19;
+    --ink:         #ffffff;
+    --ink-soft:    #c3c2b7;
+    --muted:       #898781;
+    --grid:        #2c2c2a;
+    --baseline:    #383835;
+    --border:      rgba(255,255,255,0.10);
+    --accent:      #3987e5;
+    --accent-soft: #16324f;
+    --good:        #0ca30c;
+    --good-text:   #0ca30c;
+    --warning:     #fab219;
+    --serious:     #ec835a;
+    --critical:    #e66767;
+  }
+  :root[data-theme="light"] .viz-root {
+    color-scheme: light;
+    --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink-soft: #52514e;
+    --muted: #898781; --grid: #e1e0d9; --baseline: #c3c2b7;
+    --border: rgba(11,11,11,0.10); --accent: #2a78d6; --accent-soft: #cde2fb;
+    --good: #0ca30c; --good-text: #006300; --warning: #fab219; --serious: #ec835a; --critical: #d03b3b;
+  }
+
+  .viz-root * { box-sizing: border-box; }
+  .viz-root {
+    background: var(--page);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.45;
+    padding: 28px 20px 60px;
+  }
+  .viz-root .wrap { max-width: 1140px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
+
+  .viz-root h1, .viz-root h2, .viz-root h3 { text-wrap: balance; margin: 0; }
+  .viz-root .eyebrow {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
+    color: var(--accent);
+  }
+  .viz-root header h1 { font-size: 26px; font-weight: 800; letter-spacing: -0.01em; margin-top: 4px; }
+  .viz-root header p { color: var(--ink-soft); font-size: 14px; margin-top: 6px; max-width: 62ch; }
+  .viz-root header .meta {
+    display: flex; gap: 18px; flex-wrap: wrap; margin-top: 14px; font-size: 12px; color: var(--muted);
+  }
+  .viz-root header .meta strong { color: var(--ink-soft); font-weight: 600; }
+
+  .viz-root section > .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+  .viz-root section > .section-head h2 { font-size: 15px; font-weight: 700; }
+  .viz-root section > .section-head .hint { font-size: 12px; color: var(--muted); }
+
+  .viz-root .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px;
+  }
+
+  /* KPI tiles */
+  .viz-root .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .viz-root .kpi { display: flex; flex-direction: column; gap: 6px; }
+  .viz-root .kpi .label { font-size: 12px; color: var(--ink-soft); font-weight: 600; }
+  .viz-root .kpi .value { font-size: 30px; font-weight: 800; font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+  .viz-root .kpi .delta { font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 4px; }
+  .viz-root .kpi .delta.good { color: var(--good-text); }
+  .viz-root .kpi .delta.bad { color: var(--critical); }
+  .viz-root .kpi .sub { font-size: 11px; color: var(--muted); }
+
+  /* charts row */
+  .viz-root .charts-row { display: grid; grid-template-columns: 1.15fr 1fr; gap: 14px; align-items: stretch; }
+  .viz-root .chart-card h3 { font-size: 13px; font-weight: 700; }
+  .viz-root .chart-card .chart-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .viz-root .chart-card svg { width: 100%; height: auto; display: block; margin-top: 10px; overflow: visible; }
+  .viz-root .legend { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 12px; font-size: 11px; color: var(--ink-soft); }
+  .viz-root .legend .sw { display: inline-flex; align-items: center; gap: 6px; }
+  .viz-root .legend .dot { width: 9px; height: 9px; border-radius: 2px; display: inline-block; }
+
+  .viz-root .bar-row { position: relative; }
+  .viz-root .bar-row rect { cursor: pointer; }
+  .viz-root .bar-row rect:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .viz-root .row-label { font-size: 11px; fill: var(--ink-soft); font-weight: 600; }
+  .viz-root .axis-label { font-size: 10px; fill: var(--muted); }
+
+  .viz-root .tooltip {
+    position: absolute; pointer-events: none; background: var(--ink); color: var(--page);
+    font-size: 11px; padding: 6px 9px; border-radius: 6px; white-space: nowrap;
+    transform: translate(-50%, -120%); opacity: 0; transition: opacity 0.12s ease; z-index: 5;
+    font-variant-numeric: tabular-nums;
+  }
+  .viz-root .tooltip.show { opacity: 1; }
+
+  /* status + heatmap */
+  .viz-root .status-row { display: grid; grid-template-columns: 1fr 1.3fr; gap: 14px; }
+  .viz-root .heatmap-month { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+  .viz-root .heatmap-month .m-label { width: 46px; font-size: 11px; font-weight: 600; color: var(--ink-soft); flex-shrink: 0; }
+  .viz-root .heatmap-dots { display: flex; gap: 4px; flex-wrap: wrap; }
+  .viz-root .dot-day {
+    width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0;
+  }
+  .viz-root .dot-day.g { background: var(--good); }
+  .viz-root .dot-day.v { background: var(--critical); }
+
+  /* causas */
+  .viz-root .causas-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .viz-root .causa { display: flex; flex-direction: column; gap: 8px; }
+  .viz-root .causa .area { font-size: 12px; font-weight: 700; }
+  .viz-root .causa .stripe { height: 3px; width: 28px; border-radius: 2px; background: var(--accent); margin-bottom: 2px; }
+  .viz-root .causa p { font-size: 12.5px; margin: 0; }
+  .viz-root .causa .problema { color: var(--ink); }
+  .viz-root .causa .evidencia { color: var(--muted); font-size: 11.5px; }
+  .viz-root .causa .causa-raiz { color: var(--ink-soft); border-top: 1px dashed var(--border); padding-top: 8px; margin-top: 2px; }
+  .viz-root .causa .causa-raiz b { color: var(--ink); font-weight: 700; }
+
+  /* plano de acao */
+  .viz-root .table-scroll { overflow-x: auto; }
+  .viz-root table { width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 720px; }
+  .viz-root th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); font-weight: 700; padding: 0 10px 8px; border-bottom: 1px solid var(--border); }
+  .viz-root td { padding: 10px 10px; border-bottom: 1px solid var(--grid); vertical-align: top; }
+  .viz-root tr:last-child td { border-bottom: none; }
+  .viz-root td.num { font-variant-numeric: tabular-nums; color: var(--muted); width: 24px; }
+  .viz-root .chip { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+  .viz-root .chip::before { content: ""; width: 6px; height: 6px; border-radius: 50%; }
+  .viz-root .chip.pendente { background: color-mix(in srgb, var(--muted) 16%, transparent); color: var(--ink-soft); }
+  .viz-root .chip.pendente::before { background: var(--muted); }
+  .viz-root .chip.andamento { background: color-mix(in srgb, var(--warning) 22%, transparent); color: #8a5a00; }
+  .viz-root .chip.andamento::before { background: var(--warning); }
+  :root[data-theme="dark"] .viz-root .chip.andamento, .viz-root .chip.andamento { }
+  @media (prefers-color-scheme: dark) { :root:where(:not([data-theme="light"])) .viz-root .chip.andamento { color: var(--warning); } }
+  :root[data-theme="dark"] .viz-root .chip.andamento { color: var(--warning); }
+  .viz-root .chip.concluido { background: color-mix(in srgb, var(--good) 18%, transparent); color: var(--good-text); }
+  .viz-root .chip.concluido::before { background: var(--good); }
+
+  /* rotina */
+  .viz-root .rotina-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .viz-root .rotina-col h3 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); }
+  .viz-root .rotina-col .count { font-size: 11px; color: var(--muted); font-weight: 600; }
+  .viz-root .rotina-item { padding: 10px 0; border-bottom: 1px dashed var(--border); }
+  .viz-root .rotina-item:last-child { border-bottom: none; }
+  .viz-root .rotina-item .quando { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+  .viz-root .rotina-item .tarefa { font-size: 12.5px; margin-top: 3px; }
+  .viz-root .rotina-item .aba { font-size: 11px; color: var(--accent); margin-top: 3px; }
+
+  .viz-root footer { font-size: 11px; color: var(--muted); border-top: 1px solid var(--border); padding-top: 16px; }
+
+  .viz-root a { color: var(--accent); }
+  .viz-root :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  @media (max-width: 860px) {
+    .viz-root .kpis { grid-template-columns: repeat(2, 1fr); }
+    .viz-root .charts-row, .viz-root .status-row, .viz-root .causas-grid, .viz-root .rotina-grid { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) { .viz-root .tooltip { transition: none; } }
+</style>
+
+<div class="viz-root">
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Meta Expedição Supervisão · Dashboard OTD</div>
+    <h1>Prazo de entrega (OTD) — Expedição</h1>
+    <p>Leitura dos dados reais das abas Relatório, Metas e Frete transportadora. Metas por faixa de prazo: até 2 dias ≥35%, até 5 dias ≤50%, até 7 dias ≤15%, acima de 7 dias ≤0%; o realizado vem sendo recalculado diariamente a partir da planilha.</p>
+    <div class="meta">
+      <span><strong>Período coberto:</strong> Agosto/2026</span>
+      <span><strong>Dias de expedição analisados:</strong> 7</span>
+      <span><strong>Fonte:</strong> planilha "Meta Expedição Supervisão"</span>
+      <span><strong>Última atualização:</strong> 2026-08-11 21:06</span>
+    </div>
+  </header>
+
+  <section class="kpis">
+    <div class="card kpi">
+      <div class="label">Até 2 dias (ago)</div>
+      <div class="value">54,3%</div>
+      <div class="sub">meta ≥35%</div>
+      <div class="delta good">&#9650; 19,3 p.p. acima da meta</div>
+    </div>
+    <div class="card kpi">
+      <div class="label">Até 5 dias (ago)</div>
+      <div class="value">22,9%</div>
+      <div class="sub">meta ≤50%</div>
+      <div class="delta good">&#9650; dentro da meta</div>
+    </div>
+    <div class="card kpi">
+      <div class="label">Até 7 dias (ago)</div>
+      <div class="value">22,9%</div>
+      <div class="sub">meta ≤15%</div>
+      <div class="delta bad">&#9660; 7,9 p.p. acima da meta</div>
+    </div>
+    <div class="card kpi">
+      <div class="label">Acima de 7 dias (ago)</div>
+      <div class="value">0,0%</div>
+      <div class="sub">meta ≤0%</div>
+      <div class="delta good">&#9650; dentro da meta</div>
+    </div>
+  </section>
+
+  <section class="charts-row">
+    <div class="card chart-card" id="chart-buckets">
+      <h3>Distribuição de pedidos por prazo de entrega</h3>
+      <div class="chart-sub">% de pedidos faturados em cada faixa de prazo, por mês</div>
+      <svg viewBox="0 0 640 86" role="img" aria-label="Distribuicao percentual de pedidos por faixa de prazo"><g class="bar-row" data-tip="Agosto — até 2: 54,3% · até 5: 22,9% · até 7: 22,9% · acima de 7: 0,0%"><text x="0" y="20" class="row-label">Agosto</text><rect x="60" y="4" width="271.4" height="20" fill="var(--good)"></rect><rect x="331.4" y="4" width="114.3" height="20" fill="var(--warning)"></rect><rect x="445.7" y="4" width="114.3" height="20" fill="var(--serious)"></rect><rect x="560" y="4" width="0.0" height="20" fill="var(--critical)"></rect></g><line x1="60" y1="50" x2="560" y2="50" stroke="var(--baseline)" stroke-width="1"></line><text x="60" y="64" class="axis-label">0%</text><text x="308" y="64" class="axis-label">50%</text><text x="552" y="64" class="axis-label">100%</text></svg>
+      <div class="legend">
+        <span class="sw"><span class="dot" style="background:var(--good)"></span>Até 2 dias (meta ≥35%)</span>
+        <span class="sw"><span class="dot" style="background:var(--warning)"></span>Até 5 dias (meta ≤50%)</span>
+        <span class="sw"><span class="dot" style="background:var(--serious)"></span>Até 7 dias (meta ≤15%)</span>
+        <span class="sw"><span class="dot" style="background:var(--critical)"></span>Acima de 7 dias (meta ≤0%)</span>
+      </div>
+    </div>
+
+    <div class="card chart-card" id="chart-trend">
+      <h3>Tendência — pedidos acima de 7 dias</h3>
+      <div class="chart-sub">% do total de pedidos do mês · meta: 0%</div>
+      <svg viewBox="0 0 560 250" role="img" aria-label="Tendencia de pedidos acima de 7 dias"><line x1="60" y1="20" x2="60" y2="220" stroke="var(--grid)" stroke-width="1"></line><line x1="60" y1="220" x2="540" y2="220" stroke="var(--baseline)" stroke-width="1"></line><line x1="60" y1="120" x2="540" y2="120" stroke="var(--grid)" stroke-width="1"></line><line x1="60" y1="20" x2="540" y2="20" stroke="var(--grid)" stroke-width="1"></line><text x="4" y="223" class="axis-label">0%</text><text x="4" y="123" class="axis-label">50%</text><text x="4" y="24" class="axis-label">100%</text><path d="M 300.0,220 L 300.0,220.0 L 300.0,220 Z" fill="var(--critical)" opacity="0.10"></path><path d="M 300.0,220.0" fill="none" stroke="var(--critical)" stroke-width="2"></path><circle cx="300.0" cy="220.0" r="5" fill="var(--critical)" stroke="var(--surface)" stroke-width="2" data-tip="Agosto — 0,0% acima de 7 dias"></circle><text x="300.0" y="240" class="axis-label" text-anchor="middle">Agosto</text></svg>
+      <div class="legend">
+        <span class="sw"><span class="dot" style="background:var(--critical)"></span>% acima de 7 dias</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="status-row">
+    <div class="card chart-card">
+      <h3>Status diário de faturamento</h3>
+      <div class="chart-sub">% de dias que bateram a meta do dia (verde) vs. não bateram (vermelho)</div>
+      <svg viewBox="0 0 380 52" role="img" aria-label="Status diario verde ou vermelho por mes"><g class="bar-row" data-tip="Agosto — 100,0% verde (7 dias) · 0,0% vermelho (0 dias)"><text x="0" y="20" class="row-label">Agosto</text><rect x="55" y="4" width="300.0" height="20" fill="var(--good)"></rect><rect x="355.0" y="4" width="0.0" height="20" fill="var(--critical)"></rect></g></svg>
+      <div class="legend">
+        <span class="sw"><span class="dot" style="background:var(--good)"></span>Verde · meta batida</span>
+        <span class="sw"><span class="dot" style="background:var(--critical)"></span>Vermelho · fora da meta</span>
+      </div>
+    </div>
+
+    <div class="card chart-card">
+      <h3>Calendário diário — 7 dias de expedição</h3>
+      <div class="chart-sub">Cada quadrado é um dia útil registrado na aba Relatório</div>
+      <div class="heatmap-month"><span class="m-label">Agosto</span><div class="heatmap-dots"><span class="dot-day g" title="03/08 — verde"></span><span class="dot-day g" title="04/08 — verde"></span><span class="dot-day g" title="05/08 — verde"></span><span class="dot-day g" title="06/08 — verde"></span><span class="dot-day g" title="07/08 — verde"></span><span class="dot-day g" title="10/08 — verde"></span><span class="dot-day g" title="11/08 — verde"></span></div></div>
+    </div>
+  </section>
+
+  <section class="causas">
+    <div class="section-head">
+      <h2>Causas raiz e pontos de melhoria</h2>
+      <span class="hint">7 achados, cruzando as abas Relatório, Metas, Frete transportadora e Otd Recebimento</span>
+    </div>
+    <div class="causas-grid">
+      <div class="card causa">
+        <span class="stripe"></span>
+        <div class="area">Cumprimento da meta diária</div>
+        <p class="problema">0,0% dos dias ficaram no status vermelho (0 de 7 dias úteis, Agosto).</p>
+        <p class="evidencia">Aba Relatório, coluna Status Meta</p>
+        <p class="causa-raiz"><b>Causa provável:</b> baixa aderência à meta diária de faturamento/bipagem na maioria dos dias.</p>
+      </div>
+      <div class="card causa">
+        <span class="stripe" style="background:var(--critical)"></span>
+        <div class="area">OTD — prazo de entrega</div>
+        <p class="problema">Histórico recente: em maio, 92,6% dos pedidos levaram mais de 7 dias para faturar; em junho caiu para 55,6%; em julho, 4,5% — forte melhora nos meses anteriores ao período exibido.</p>
+        <p class="evidencia">Aba Metas, linha "Acima 7"</p>
+        <p class="causa-raiz"><b>Causa raiz (registrada no próprio relatório mensal):</b> falta de peças por redução de estoque e redução de turnos feita em dez/2025.</p>
+      </div>
+      <div class="card causa">
+        <span class="stripe" style="background:var(--serious)"></span>
+        <div class="area">Produtividade (peças/dia)</div>
+        <p class="problema">Meta de 2.300 peças/dia; maio atingiu apenas 6,2% (142/dia). A métrica parou de ser preenchida a partir de junho (0 registrado em junho e julho).</p>
+        <p class="evidencia">Aba Metas, linha "Peças por dia"</p>
+        <p class="causa-raiz"><b>Causa provável:</b> falta de peças (mesmo gargalo do OTD) até maio; a partir de junho falta apontamento — indicador abandonado, não necessariamente resolvido.</p>
+      </div>
+      <div class="card causa">
+        <span class="stripe" style="background:var(--good)"></span>
+        <div class="area">Transportadora / coletas</div>
+        <p class="problema">96% das coletas (102 de 106) estão marcadas "NO PRAZO".</p>
+        <p class="evidencia">Aba Frete transportadora</p>
+        <p class="causa-raiz"><b>Conclusão:</b> o gargalo de OTD está na operação interna (separação, bipagem, faturamento) — não na transportadora.</p>
+      </div>
+      <div class="card causa">
+        <span class="stripe" style="background:var(--muted)"></span>
+        <div class="area">Qualidade dos dados</div>
+        <p class="problema">Fórmulas quebradas (#REF!) e um valor incoerente na linha OTD de abril (6.731 dias); erros de digitação de datas.</p>
+        <p class="evidencia">Abas Metas, Frete transportadora e Planejamento</p>
+        <p class="causa-raiz"><b>Causa provável:</b> falta de validação de dados e de revisão periódica das fórmulas.</p>
+      </div>
+      <div class="card causa">
+        <span class="stripe" style="background:var(--muted)"></span>
+        <div class="area">OTD Recebimento (inbound)</div>
+        <p class="problema">Coluna "Alcançado" zerada em todos os meses, sem registro após fevereiro/2026.</p>
+        <p class="evidencia">Aba Otd Recebimento</p>
+        <p class="causa-raiz"><b>Causa provável:</b> a aba parou de ser alimentada; falta rotina de apontamento do recebimento.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="plano">
+    <div class="section-head">
+      <h2>Plano de ação</h2>
+      <span class="hint">7 ações priorizadas a partir dos achados acima</span>
+    </div>
+    <div class="card table-scroll">
+      <table>
+        <thead><tr><th>Nº</th><th>Problema</th><th>Ação proposta</th><th>Responsável</th><th>Prazo</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td class="num">1</td><td>Fórmulas quebradas (#REF!) e OTD com valor incoerente</td><td>Revisar e corrigir as fórmulas das linhas "Peças por dia" e "OTD" na aba Metas</td><td>Supervisor / responsável pela planilha</td><td>7 dias</td><td><span class="chip pendente">Pendente</span></td></tr>
+          <tr><td class="num">2</td><td>Erros de digitação de datas</td><td>Aplicar validação de dados nas colunas de data das abas Planejamento e Frete transportadora</td><td>Supervisor</td><td>15 dias</td><td><span class="chip pendente">Pendente</span></td></tr>
+          <tr><td class="num">3</td><td>Abas Otd Recebimento e Controle Mensal desatualizadas</td><td>Retomar preenchimento mensal e incluir como item fixo da rotina</td><td>Recebimento / Financeiro</td><td>Próximo fechamento mensal</td><td><span class="chip pendente">Pendente</span></td></tr>
+          <tr><td class="num">4</td><td>Baixa produtividade de peças/dia (abril e maio)</td><td>Investigar nível de estoque e escala de turnos; avaliar reforço temporário nos picos</td><td>Supervisor + Compras/Estoque</td><td>30 dias</td><td><span class="chip andamento">Em andamento</span></td></tr>
+          <tr><td class="num">5</td><td>0,0% dos dias fora da meta (vermelho)</td><td>Acompanhamento diário do status com reunião rápida de 10 min no início do turno</td><td>Supervisor</td><td>Imediato</td><td><span class="chip andamento">Em andamento</span></td></tr>
+          <tr><td class="num">6</td><td>Meta de até 2 dias (35%) abaixo do realizado (54,3% em ago)</td><td>Definir metas intermediárias trimestrais mais realistas e revisar com base na tendência</td><td>Gerência / Supervisor</td><td>Próxima reunião mensal</td><td><span class="chip pendente">Pendente</span></td></tr>
+          <tr><td class="num">7</td><td>Dependência de poucos dados sólidos sobre a transportadora</td><td>Manter o indicador "NO PRAZO" das coletas em monitoramento de controle</td><td>Supervisor</td><td>Contínuo</td><td><span class="chip andamento">Em andamento</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="rotina">
+    <div class="section-head">
+      <h2>Rotina de análise</h2>
+      <span class="hint">Cadência sugerida para sustentar o acompanhamento diário do OTD</span>
+    </div>
+    <div class="rotina-grid">
+      <div class="card rotina-col">
+        <h3>Diária</h3>
+        <div class="count">8 itens</div>
+        <div class="rotina-item"><div class="quando">Início do turno</div><div class="tarefa">Conferir faturamento do dia anterior x meta faturado; atualizar status (vermelho/verde)</div><div class="aba">Relatório</div></div>
+        <div class="rotina-item"><div class="quando">Início do turno</div><div class="tarefa">Levantar pedidos com mais de 7 dias em aberto e priorizar separação/bipagem</div><div class="aba">Planejamento</div></div>
+        <div class="rotina-item"><div class="quando">Meio do turno</div><div class="tarefa">Verificar % de pré-separação e bipagem acumulado vs. meta por hora</div><div class="aba">Bipagem / Pré-Separação Ind.</div></div>
+        <div class="rotina-item"><div class="quando">Meio do turno</div><div class="tarefa">Confirmar coletas do dia com transportadoras</div><div class="aba">Frete transportadora</div></div>
+        <div class="rotina-item"><div class="quando">Fim do turno</div><div class="tarefa">Registrar Qtd. Faturada, Média e % Meta; marcar Status Meta do dia</div><div class="aba">Relatório</div></div>
+        <div class="rotina-item"><div class="quando">Fim do turno</div><div class="tarefa">Reunião rápida (5–10 min) sobre gargalos do dia e prioridades do dia seguinte</div><div class="aba">—</div></div>
+        <div class="rotina-item"><div class="quando">Diário</div><div class="tarefa">Registrar pedidos recebidos e status de prazo</div><div class="aba">Otd Recebimento</div></div>
+        <div class="rotina-item"><div class="quando">Diário</div><div class="tarefa">Lançar notas fiscais de GNRE pagas/pendentes</div><div class="aba">Controle de GNRE</div></div>
+      </div>
+      <div class="card rotina-col">
+        <h3>Semanal</h3>
+        <div class="count">3 itens · toda sexta-feira</div>
+        <div class="rotina-item"><div class="quando">Sexta-feira</div><div class="tarefa">Fechar "Total Semana" e revisar a tendência do gráfico de OTD</div><div class="aba">Dashboard OTD</div></div>
+        <div class="rotina-item"><div class="quando">Sexta-feira</div><div class="tarefa">Atualizar status das ações do plano de ação</div><div class="aba">Plano de ação</div></div>
+        <div class="rotina-item"><div class="quando">Sexta-feira</div><div class="tarefa">Revisar orçamento e gastos com transportadoras no período</div><div class="aba">Transportes Lalamove</div></div>
+      </div>
+      <div class="card rotina-col">
+        <h3>Mensal</h3>
+        <div class="count">4 itens · último dia útil</div>
+        <div class="rotina-item"><div class="quando">Fechamento</div><div class="tarefa">Fechar "Total Mês" e atualizar Qtd. Pedidos / Realizado por faixa de prazo</div><div class="aba">Metas</div></div>
+        <div class="rotina-item"><div class="quando">Fechamento</div><div class="tarefa">Consolidar custos (frete, GNRE, serviço interno)</div><div class="aba">Controle Mensal</div></div>
+        <div class="rotina-item"><div class="quando">Fechamento</div><div class="tarefa">Ajustar meta faturado do próximo mês conforme dias úteis disponíveis</div><div class="aba">Relatório</div></div>
+        <div class="rotina-item"><div class="quando">Fechamento</div><div class="tarefa">Revisar causas raiz e atualizar a análise de pontos de melhoria</div><div class="aba">Causas e melhorias</div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Dados extraídos automaticamente da planilha "Meta Expedição Supervisão" (Google Sheets), abas Relatório e Metas — atualizado todos os dias às 07h. Última atualização: 2026-08-11 21:06. Causas raiz e plano de ação refletem a análise mais recente; percentuais citados neles são recalculados a cada atualização. Percentuais de OTD calculados sobre pedidos com faixa de prazo apontada (mês com menos de 10 pedidos apontados é ignorado no gráfico).
+  </footer>
+
+</div>
+</div>
+
+<script>
+(function() {
+  var root = document.currentScript.previousElementSibling;
+  var tip = document.createElement('div');
+  tip.className = 'tooltip';
+  root.appendChild(tip);
+
+  function showTip(el, evt) {
+    var text = el.getAttribute('data-tip');
+    if (!text) return;
+    tip.textContent = text;
+    tip.classList.add('show');
+    moveTip(evt);
+  }
+  function moveTip(evt) {
+    var rect = root.getBoundingClientRect();
+    tip.style.left = (evt.clientX - rect.left) + 'px';
+    tip.style.top = (evt.clientY - rect.top) + 'px';
+  }
+  function hideTip() { tip.classList.remove('show'); }
+
+  var targets = root.querySelectorAll('[data-tip]');
+  targets.forEach(function(el) {
+    el.addEventListener('mousemove', function(evt) { showTip(el, evt); });
+    el.addEventListener('mouseleave', hideTip);
+    el.setAttribute('tabindex', '0');
+    el.addEventListener('focus', function(evt) {
+      var box = el.getBoundingClientRect();
+      var rect = root.getBoundingClientRect();
+      tip.textContent = el.getAttribute('data-tip');
+      tip.classList.add('show');
+      tip.style.left = (box.left - rect.left + box.width / 2) + 'px';
+      tip.style.top = (box.top - rect.top) + 'px';
+    });
+    el.addEventListener('blur', hideTip);
+  });
+})();
+</script>
