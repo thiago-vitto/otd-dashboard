@@ -1,0 +1,687 @@
+<title>Painel Financeiro — Thiago &amp; Tatiane</title>
+<style>
+  :root{
+    color-scheme: light;
+    --bg: #f5f3ec;
+    --page-edge: #ece8dd;
+    --surface: #ffffff;
+    --surface-2: #efece1;
+    --ink: #16160f;
+    --ink-2: #55534a;
+    --ink-mute: #8b8a7d;
+    --line: #e2ded1;
+    --line-strong: #cfcabb;
+    --accent: #1f5b63;
+    --accent-ink: #ffffff;
+    --accent-soft: #dfeceb;
+    --warm: #a8752b;
+    --warm-soft: #f2e6d2;
+    --good: #0ca30c;
+    --warning: #b8790a;
+    --serious: #c1531f;
+    --critical: #b23232;
+    --good-soft: #e2f3df;
+    --warning-soft: #faedd3;
+    --serious-soft: #fbe2d5;
+    --critical-soft: #f8dcdc;
+    --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100;
+    --s5: #e87ba4; --s6: #008300; --s7: #4a3aa7; --s8: #e34948;
+    --shadow: 0 1px 2px rgba(22,22,15,.04), 0 8px 24px -12px rgba(22,22,15,.18);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:where(:not([data-theme="light"])){
+      color-scheme: dark;
+      --bg: #131210;
+      --page-edge: #0c0b0a;
+      --surface: #1c1b18;
+      --surface-2: #232220;
+      --ink: #f5f4ef;
+      --ink-2: #c3c1b4;
+      --ink-mute: #8b8a7d;
+      --line: #302e29;
+      --line-strong: #3d3b34;
+      --accent: #4fa3ac;
+      --accent-ink: #06201f;
+      --accent-soft: #1d3739;
+      --warm: #d99a4a;
+      --warm-soft: #3a2d18;
+      --good: #29b529;
+      --warning: #e0a316;
+      --serious: #e0764e;
+      --critical: #e05a5a;
+      --good-soft: #163018;
+      --warning-soft: #362b12;
+      --serious-soft: #3a2015;
+      --critical-soft: #3a1c1c;
+      --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500;
+      --s5: #d55181; --s6: #17a017; --s7: #9085e9; --s8: #e66767;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 28px -14px rgba(0,0,0,.55);
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme: dark;
+    --bg: #131210; --page-edge: #0c0b0a; --surface: #1c1b18; --surface-2: #232220;
+    --ink: #f5f4ef; --ink-2: #c3c1b4; --ink-mute: #8b8a7d;
+    --line: #302e29; --line-strong: #3d3b34;
+    --accent: #4fa3ac; --accent-ink: #06201f; --accent-soft: #1d3739;
+    --warm: #d99a4a; --warm-soft: #3a2d18;
+    --good: #29b529; --warning: #e0a316; --serious: #e0764e; --critical: #e05a5a;
+    --good-soft: #163018; --warning-soft: #362b12; --serious-soft: #3a2015; --critical-soft: #3a1c1c;
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500;
+    --s5: #d55181; --s6: #17a017; --s7: #9085e9; --s8: #e66767;
+  }
+  :root[data-theme="light"]{
+    color-scheme: light;
+    --bg: #f5f3ec; --page-edge: #ece8dd; --surface: #ffffff; --surface-2: #efece1;
+    --ink: #16160f; --ink-2: #55534a; --ink-mute: #8b8a7d;
+    --line: #e2ded1; --line-strong: #cfcabb;
+    --accent: #1f5b63; --accent-ink: #ffffff; --accent-soft: #dfeceb;
+    --warm: #a8752b; --warm-soft: #f2e6d2;
+    --good: #0ca30c; --warning: #b8790a; --serious: #c1531f; --critical: #b23232;
+    --good-soft: #e2f3df; --warning-soft: #faedd3; --serious-soft: #fbe2d5; --critical-soft: #f8dcdc;
+    --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100;
+    --s5: #e87ba4; --s6: #008300; --s7: #4a3aa7; --s8: #e34948;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--page-edge);
+    color:var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .page{
+    max-width:1280px;
+    margin:0 auto;
+    background:var(--bg);
+    min-height:100vh;
+    padding: 28px 32px 64px;
+  }
+  @media (max-width:720px){ .page{padding:18px 16px 48px;} }
+
+  a{color:inherit;}
+  .tabular{font-variant-numeric: tabular-nums;}
+
+  /* ---------- Header ---------- */
+  .topbar{
+    display:flex; justify-content:space-between; align-items:flex-end; gap:16px;
+    flex-wrap:wrap;
+    padding-bottom:20px; margin-bottom:24px;
+    border-bottom:1px solid var(--line);
+  }
+  .brand-eyebrow{
+    text-transform:uppercase; letter-spacing:.12em; font-size:11px; font-weight:700;
+    color:var(--accent); margin:0 0 6px;
+  }
+  h1{
+    font-size:28px; font-weight:700; letter-spacing:-.01em; margin:0;
+    text-wrap:balance;
+  }
+  .topbar .meta{
+    text-align:right; font-size:13px; color:var(--ink-2); line-height:1.5;
+  }
+  .topbar .meta strong{color:var(--ink); font-weight:600;}
+  .legend-row{
+    display:flex; gap:14px; margin-top:8px; flex-wrap:wrap; justify-content:flex-end;
+  }
+  .legend-chip{display:flex; align-items:center; gap:6px; font-size:12px; color:var(--ink-2);}
+  .legend-swatch{width:14px; height:0; border-top:2px solid var(--accent); display:inline-block;}
+  .legend-swatch.dash{border-top-style:dashed;}
+
+  /* ---------- KPI row ---------- */
+  .kpi-grid{
+    display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-bottom:28px;
+  }
+  @media (max-width:980px){ .kpi-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:520px){ .kpi-grid{grid-template-columns:1fr;} }
+  .kpi{
+    background:var(--surface); border:1px solid var(--line); border-radius:12px;
+    padding:16px 18px; box-shadow:var(--shadow); position:relative;
+  }
+  .kpi .label{font-size:12px; color:var(--ink-mute); text-transform:uppercase; letter-spacing:.06em; font-weight:600;}
+  .kpi .value{font-size:26px; font-weight:700; margin-top:8px; letter-spacing:-.01em;}
+  .kpi .sub{font-size:12.5px; color:var(--ink-2); margin-top:6px; line-height:1.4;}
+  .chip{
+    display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:700;
+    padding:3px 8px; border-radius:100px; margin-top:10px;
+  }
+  .chip.critical{background:var(--critical-soft); color:var(--critical);}
+  .chip.warning{background:var(--warning-soft); color:var(--warning);}
+  .chip.good{background:var(--good-soft); color:var(--good);}
+  .chip::before{content:""; width:6px; height:6px; border-radius:50%; background:currentColor; flex:none;}
+
+  /* ---------- Section shell ---------- */
+  .section{margin-bottom:28px;}
+  .section-head{display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:12px; flex-wrap:wrap;}
+  .section-head h2{font-size:16px; font-weight:700; margin:0; letter-spacing:-.005em;}
+  .section-head .hint{font-size:12.5px; color:var(--ink-mute);}
+  .panel{
+    background:var(--surface); border:1px solid var(--line); border-radius:14px;
+    padding:20px 22px; box-shadow:var(--shadow);
+  }
+  .two-col{display:grid; grid-template-columns:1.6fr 1fr; gap:16px; align-items:stretch;}
+  @media (max-width:900px){ .two-col{grid-template-columns:1fr;} }
+
+  .table-toggle{
+    font-size:12px; font-weight:600; color:var(--accent); background:none; border:1px solid var(--line-strong);
+    border-radius:8px; padding:4px 10px; cursor:pointer;
+  }
+  .table-toggle:hover{background:var(--accent-soft);}
+  table.datatable{width:100%; border-collapse:collapse; font-size:13px; margin-top:12px;}
+  table.datatable th{text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-mute); padding:6px 8px; border-bottom:1px solid var(--line-strong);}
+  table.datatable td{padding:6px 8px; border-bottom:1px solid var(--line); color:var(--ink-2);}
+  table.datatable td.num{text-align:right; font-variant-numeric:tabular-nums; color:var(--ink);}
+  .hidden{display:none !important;}
+
+  /* ---------- Trend chart ---------- */
+  .trend-wrap{position:relative;}
+  svg.trend{width:100%; height:auto; display:block; overflow:visible;}
+  .trend-note{
+    margin-top:10px; font-size:12.5px; color:var(--ink-2); background:var(--warm-soft);
+    border:1px solid var(--line); border-radius:10px; padding:10px 12px; line-height:1.5;
+  }
+  .trend-note b{color:var(--ink);}
+  .tt{
+    position:absolute; pointer-events:none; background:var(--ink); color:var(--bg);
+    font-size:12px; padding:7px 10px; border-radius:8px; transform:translate(-50%,-115%);
+    white-space:nowrap; opacity:0; transition:opacity .1s ease; box-shadow:var(--shadow); z-index:5;
+  }
+  .tt.show{opacity:1;}
+  .tt .tt-val{font-weight:700; font-variant-numeric:tabular-nums;}
+
+  /* ---------- Card utilization ---------- */
+  .card-row{margin-bottom:14px;}
+  .card-row:last-child{margin-bottom:0;}
+  .card-row .row-top{display:flex; justify-content:space-between; font-size:13px; margin-bottom:5px; gap:8px;}
+  .card-row .row-top .name{font-weight:600;}
+  .card-row .row-top .figs{color:var(--ink-2); font-variant-numeric:tabular-nums; text-align:right;}
+  .bar-track{background:var(--surface-2); border-radius:6px; height:10px; overflow:hidden; position:relative;}
+  .bar-fill{height:100%; border-radius:6px; background:var(--accent);}
+  .bar-fill.unknown{background:repeating-linear-gradient(45deg, var(--critical) 0 6px, transparent 6px 12px); opacity:.5;}
+  .card-row .pct{font-size:11.5px; color:var(--ink-mute); margin-top:4px;}
+
+  /* ---------- Category bars ---------- */
+  .cat-list{display:flex; flex-direction:column; gap:10px;}
+  .cat-item{display:grid; grid-template-columns:120px 1fr 78px; align-items:center; gap:10px; font-size:13px;}
+  .cat-item .cname{font-weight:600; color:var(--ink);}
+  .cat-track{display:block; background:var(--surface-2); border-radius:6px; height:14px; position:relative; overflow:hidden;}
+  .cat-fill{display:block; height:100%; border-radius:6px;}
+  .cat-item .cval{text-align:right; font-variant-numeric:tabular-nums; color:var(--ink-2);}
+
+  /* ---------- Findings ---------- */
+  .finding-grid{display:flex; flex-direction:column; gap:10px;}
+  .finding{
+    display:grid; grid-template-columns:auto 1fr; gap:12px; padding:13px 14px;
+    border:1px solid var(--line); border-radius:10px; background:var(--surface-2);
+  }
+  .sev{
+    align-self:start; font-size:10.5px; font-weight:800; text-transform:uppercase; letter-spacing:.04em;
+    padding:4px 8px; border-radius:6px; white-space:nowrap; display:flex; align-items:center; gap:5px;
+  }
+  .sev::before{content:""; width:6px; height:6px; border-radius:50%; background:currentColor;}
+  .sev.critical{background:var(--critical-soft); color:var(--critical);}
+  .sev.warning{background:var(--warning-soft); color:var(--warning);}
+  .sev.note{background:var(--surface); color:var(--ink-mute); border:1px solid var(--line-strong);}
+  .sev.good{background:var(--good-soft); color:var(--good);}
+  .finding.is-resolved{opacity:.75;}
+  .finding h3{font-size:13.5px; margin:0 0 4px; font-weight:700;}
+  .finding p{font-size:13px; margin:0; color:var(--ink-2); line-height:1.5;}
+
+  /* ---------- Action plan ---------- */
+  .plan-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px;}
+  @media (max-width:980px){ .plan-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .plan-grid{grid-template-columns:1fr;} }
+  .plan-col{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px; box-shadow:var(--shadow); display:flex; flex-direction:column;}
+  .plan-col .horizon{font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.06em; color:var(--warm); margin-bottom:2px;}
+  .plan-col .horizon-sub{font-size:12px; color:var(--ink-mute); margin-bottom:12px;}
+  .plan-item{
+    display:flex; gap:9px; align-items:flex-start; padding:8px 0; border-top:1px solid var(--line); cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .plan-item:first-of-type{border-top:none;}
+  .plan-item .box{
+    width:16px; height:16px; border-radius:5px; border:1.5px solid var(--line-strong); flex:none; margin-top:2px;
+    display:flex; align-items:center; justify-content:center; transition:background .12s, border-color .12s;
+  }
+  .plan-item .box svg{width:10px; height:10px; opacity:0; transition:opacity .12s;}
+  .plan-item span.txt{font-size:13px; line-height:1.45; color:var(--ink);}
+  .plan-item.done .box{background:var(--accent); border-color:var(--accent);}
+  .plan-item.done .box svg{opacity:1;}
+  .plan-item.done span.txt{color:var(--ink-mute); text-decoration:line-through; text-decoration-color:var(--line-strong);}
+  .plan-item:focus-visible, .table-toggle:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+
+  footer{
+    margin-top:36px; padding-top:16px; border-top:1px solid var(--line);
+    font-size:12px; color:var(--ink-mute); line-height:1.7;
+  }
+  footer b{color:var(--ink-2);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important;}
+  }
+</style>
+
+<div class="page">
+
+  <div class="topbar">
+    <div>
+      <p class="brand-eyebrow">Finanças da família &middot; Thiago &amp; Tatiane</p>
+      <h1>Painel de Controle Financeiro</h1>
+    </div>
+    <div class="meta">
+      Atualizado em <strong>12/08/2026</strong><br>
+      Próxima atualização automática: <strong>amanhã às 22:00</strong>
+      <div class="legend-row">
+        <span class="legend-chip"><span class="legend-swatch"></span>Real / pago</span>
+        <span class="legend-chip"><span class="legend-swatch dash"></span>Projetado</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- KPI ROW -->
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="label">Renda mensal (fixa)</div>
+      <div class="value tabular">R$ 23.090</div>
+      <div class="sub">R$ 19.526 salários (Tatiane R$ 11.220 + Thiago R$ 8.306) + R$ 3.564,40 de aluguel recebido (Casa Carrão) — inalterado</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Saldo em contas — hoje</div>
+      <div class="value tabular">-R$ 2.840,14</div>
+      <div class="sub">Conta Thi R$ 196,54 + Conta Tati -R$ 3.036,68 — ficou negativo (era R$ 1.335,26 positivo na leitura anterior); inalterado desde então</div>
+      <span class="chip critical">Negativo</span>
+    </div>
+    <div class="kpi">
+      <div class="label">Fatura de cartões (mês)</div>
+      <div class="value tabular">R$ 7.150,58</div>
+      <div class="sub">5,72% dos R$ 124.999,06 de limite combinado (ciclo 09.2026) — inalterado</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Fundo de emergência</div>
+      <div class="value tabular">R$ 2.192,53</div>
+      <div class="sub">Cobre menos de 2 dias de despesas (~R$ 44.322/mês); subiu R$ 758,61 desde a leitura anterior a essa, mas a origem do aumento não foi identificada nos lançamentos. R$ 5.466,22 sacados em jun/jul seguem não repostos. Meta mínima: 3 a 6 meses</div>
+      <span class="chip critical">Crítico</span>
+    </div>
+    <div class="kpi">
+      <div class="label">Empréstimo Nubank em aberto</div>
+      <div class="value tabular">R$ 10.595</div>
+      <div class="sub">10 parcelas restantes de R$ 1.059,45 (2 de 12 já pagas) — inalterado</div>
+      <span class="chip warning">Atenção</span>
+    </div>
+  </div>
+
+  <!-- TREND + CARDS -->
+  <div class="section">
+    <div class="two-col">
+      <div class="panel">
+        <div class="section-head">
+          <h2>Saldo consolidado das duas contas — jun/26 a dez/26</h2>
+          <button class="table-toggle" data-toggle="trend-table">Ver como tabela</button>
+        </div>
+        <div class="trend-wrap" id="trend-wrap">
+          <svg class="trend" id="trend-svg" viewBox="0 0 720 260" preserveAspectRatio="xMidYMid meet"></svg>
+          <div class="tt" id="trend-tt"></div>
+        </div>
+        <table class="datatable hidden" id="trend-table">
+          <thead><tr><th>Mês</th><th>Status</th><th style="text-align:right">Saldo somado</th></tr></thead>
+          <tbody id="trend-table-body"></tbody>
+        </table>
+        <div class="trend-note">
+          <b>Leitura:</b> em agosto a conta da Tatiane recebeu uma transferência de R$ 19.000,00 rotulada "Transferencia Thi", mas a conta do Thiago só registrou R$ 11.275,35 de entrada com o mesmo nome — uma diferença de R$ 7.724,65 ainda não
+          explicada (ver inconsistência nº 2). Agosto já fechou (Pago), então esse buraco é definitivo e não vai mais se corrigir sozinho: a conta da Tatiane segue inflando (R$ 52.166,29 projetados em dezembro) enquanto a do Thiago fica cada vez mais negativa
+          (-R$ 25.178,48 no mesmo mês). O ponto de agosto também foi corrigido nesta leitura (ver inconsistência nº 10) — o total somado ainda não é uma previsão confiável.
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="section-head">
+          <h2>Uso dos cartões de crédito</h2>
+        </div>
+        <div id="card-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CATEGORY BREAKDOWN -->
+  <div class="section">
+    <div class="panel">
+      <div class="section-head">
+        <h2>Gastos por categoria — cartões, julho/2026 (mês fechado mais completo)</h2>
+        <button class="table-toggle" data-toggle="cat-table">Ver como tabela</button>
+      </div>
+      <div class="cat-list" id="cat-list"></div>
+      <table class="datatable hidden" id="cat-table">
+        <thead><tr><th>Categoria</th><th style="text-align:right">Valor</th><th style="text-align:right">% do mês</th></tr></thead>
+        <tbody id="cat-table-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- INCONSISTENCIES -->
+  <div class="section">
+    <div class="section-head">
+      <h2>Inconsistências encontradas na planilha</h2>
+      <span class="hint">10 pontos em aberto — do mais para o menos urgente</span>
+    </div>
+    <div class="finding-grid" id="finding-list"></div>
+    <div class="finding-grid" id="resolved-list" style="margin-top:10px;"></div>
+  </div>
+
+  <!-- ACTION PLAN -->
+  <div class="section">
+    <div class="section-head">
+      <h2>Plano de ação — rumo à independência financeira</h2>
+      <span class="hint">clique em um item para marcar como feito</span>
+    </div>
+    <div class="plan-grid" id="plan-grid"></div>
+  </div>
+
+  <footer>
+    <b>Fonte dos dados:</b> planilha Google Sheets "Gerenciador de Contas / Cartões" do usuário (contas correntes Thi e Tati, 5 cartões de crédito). &middot;
+    <b>Método:</b> valores de renda, limites e saldos de cartão vêm diretamente dos painéis-resumo da planilha; a evolução de saldo e a quebra por categoria foram recalculadas a partir dos lançamentos linha a linha e conferidas contra os totais que a própria planilha informa. &middot;
+    <b>Atualização automática:</b> uma rotina agendada roda todos os dias às 22:00, refaz essa leitura e republica este painel com os números mais recentes. A leitura de hoje (12/08/2026) conferiu a planilha linha a linha novamente: os dados brutos não mudaram desde a última leitura (a planilha não foi editada) — saldos de conta, faturas de cartão, fundo de emergência, saldo do empréstimo Nubank e a quebra por categoria de julho permanecem idênticos, e todas as inconsistências já listadas seguem no mesmo estado. Nenhuma correção de cálculo foi necessária desta vez.
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  function cssVar(name){ return getComputedStyle(root).getPropertyValue(name).trim(); }
+
+  // ---------------- TREND CHART ----------------
+  var months = [
+    {label:"Jun/26", value:229.79, status:"real"},
+    {label:"Jul/26", value:886.38, status:"real"},
+    {label:"Ago/26", value:5716.73, status:"real"},
+    {label:"Set/26", value:4980.81, status:"proj"},
+    {label:"Out/26", value:11757.28, status:"proj"},
+    {label:"Nov/26", value:19344.05, status:"proj"},
+    {label:"Dez/26", value:26987.81, status:"proj"}
+  ];
+
+  function fmtBRL(v){
+    var neg = v < 0;
+    v = Math.abs(v);
+    var s = v.toLocaleString('pt-BR', {minimumFractionDigits:2, maximumFractionDigits:2});
+    return (neg?'-':'') + 'R$ ' + s;
+  }
+  function fmtBRL0(v){
+    var neg = v < 0; v = Math.abs(v);
+    return (neg?'-':'') + 'R$ ' + Math.round(v).toLocaleString('pt-BR');
+  }
+
+  var svg = document.getElementById('trend-svg');
+  var W = 720, H = 260, padL = 54, padR = 20, padT = 18, padB = 30;
+  var plotW = W - padL - padR, plotH = H - padT - padB;
+  var vals = months.map(function(m){return m.value;});
+  var vMin = Math.min.apply(null, vals), vMax = Math.max.apply(null, vals);
+  var vSpan = (vMax - vMin) || 1;
+  vMin -= vSpan*0.12; vMax += vSpan*0.12;
+
+  function xFor(i){ return padL + (i/(months.length-1)) * plotW; }
+  function yFor(v){ return padT + (1 - (v - vMin)/(vMax-vMin)) * plotH; }
+
+  var ns = "http://www.w3.org/2000/svg";
+  function el(tag, attrs){
+    var e = document.createElementNS(ns, tag);
+    for (var k in attrs){ e.setAttribute(k, attrs[k]); }
+    return e;
+  }
+
+  // gridlines + zero line
+  var gridColor = cssVar('--line');
+  var baselineColor = cssVar('--line-strong');
+  [0,0.25,0.5,0.75,1].forEach(function(t){
+    var y = padT + t*plotH;
+    svg.appendChild(el('line', {x1:padL, x2:W-padR, y1:y, y2:y, stroke:gridColor, 'stroke-width':1}));
+  });
+  if (vMin < 0 && vMax > 0){
+    var y0 = yFor(0);
+    svg.appendChild(el('line', {x1:padL, x2:W-padR, y1:y0, y2:y0, stroke:baselineColor, 'stroke-width':1.5}));
+  }
+
+  // area fill (accent, faint)
+  var areaPts = "M " + xFor(0) + " " + yFor(0>vMin?Math.max(vMin,0):vMin);
+  var base = Math.max(vMin, 0);
+  var d = "M" + xFor(0) + "," + yFor(base);
+  months.forEach(function(m,i){ d += " L" + xFor(i) + "," + yFor(m.value); });
+  d += " L" + xFor(months.length-1) + "," + yFor(base) + " Z";
+  svg.appendChild(el('path', {d:d, fill:cssVar('--accent'), opacity:0.08}));
+
+  // split real vs projected polylines
+  var realPts = [], projPts = [];
+  months.forEach(function(m,i){
+    var pt = [xFor(i), yFor(m.value)];
+    if (m.status === 'real') realPts.push(pt); else projPts.push(pt);
+  });
+  // ensure continuity: include last real point at start of projected line
+  if (realPts.length && projPts.length){ projPts.unshift(realPts[realPts.length-1]); }
+
+  function toPath(pts){ return pts.map(function(p,i){return (i===0?'M':'L')+p[0]+','+p[1];}).join(' '); }
+
+  svg.appendChild(el('path', {d:toPath(realPts), fill:'none', stroke:cssVar('--accent'), 'stroke-width':2.5, 'stroke-linecap':'round'}));
+  var projPath = el('path', {d:toPath(projPts), fill:'none', stroke:cssVar('--accent'), 'stroke-width':2.5, 'stroke-linecap':'round'});
+  projPath.setAttribute('stroke-dasharray', '6 5');
+  svg.appendChild(projPath);
+
+  // axis labels (x)
+  months.forEach(function(m,i){
+    var t = el('text', {x:xFor(i), y:H-8, 'text-anchor':'middle', 'font-size':11, fill:cssVar('--ink-mute')});
+    t.textContent = m.label;
+    svg.appendChild(t);
+  });
+  // y axis labels
+  [vMax, (vMax+vMin)/2, vMin].forEach(function(v){
+    var t = el('text', {x:padL-8, y:yFor(v)+4, 'text-anchor':'end', 'font-size':10, fill:cssVar('--ink-mute')});
+    t.textContent = fmtBRL0(v);
+    svg.appendChild(t);
+  });
+
+  // points + hover targets
+  var tt = document.getElementById('trend-tt');
+  var wrap = document.getElementById('trend-wrap');
+  months.forEach(function(m,i){
+    var cx = xFor(i), cy = yFor(m.value);
+    var dot = el('circle', {cx:cx, cy:cy, r:4.5, fill: (m.status==='real'?cssVar('--accent'):cssVar('--surface')), stroke:cssVar('--accent'), 'stroke-width':2});
+    svg.appendChild(dot);
+    var hit = el('circle', {cx:cx, cy:cy, r:14, fill:'transparent', style:'cursor:pointer'});
+    hit.addEventListener('mouseenter', function(){ showTT(m, cx, cy); });
+    hit.addEventListener('mouseleave', function(){ tt.classList.remove('show'); });
+    hit.addEventListener('touchstart', function(){ showTT(m, cx, cy); });
+    svg.appendChild(hit);
+  });
+  function showTT(m, cx, cy){
+    var pctX = (cx/W)*100, pctY = (cy/H)*100;
+    tt.style.left = pctX + '%';
+    tt.style.top = pctY + '%';
+    tt.innerHTML = m.label + ' &middot; ' + (m.status==='real'?'real':'projetado') + '<br><span class="tt-val">' + fmtBRL(m.value) + '</span>';
+    tt.classList.add('show');
+  }
+
+  // table view
+  var tbody = document.getElementById('trend-table-body');
+  months.forEach(function(m){
+    var tr = document.createElement('tr');
+    tr.innerHTML = '<td>'+m.label+'</td><td>'+(m.status==='real'?'Real':'Projetado')+'</td><td class="num">'+fmtBRL(m.value)+'</td>';
+    tbody.appendChild(tr);
+  });
+
+  // ---------------- CARD UTILIZATION ----------------
+  var cards = [
+    {name:"Cartão Itaú (Thi)", limit:39849.06, spend:1544.69},
+    {name:"Cartão Inter (Thi)", limit:8000.00, spend:1590.55},
+    {name:"Cartão Nubank (Tati)", limit:39950.00, spend:3157.39},
+    {name:"Cartão Mercado Livre (Thi)", limit:32200.00, spend:473.56},
+    {name:"Cartão Nubank (Thi)", limit:5000.00, spend:384.39}
+  ];
+  var cardListEl = document.getElementById('card-list');
+  cards.forEach(function(c){
+    var row = document.createElement('div');
+    row.className = 'card-row';
+    if (c.limit){
+      var pct = (c.spend/c.limit)*100;
+      row.innerHTML =
+        '<div class="row-top"><span class="name">'+c.name+'</span><span class="figs tabular">'+fmtBRL0(c.spend)+' de '+fmtBRL0(c.limit)+'</span></div>'+
+        '<div class="bar-track"><div class="bar-fill" style="width:'+Math.min(pct,100).toFixed(1)+'%"></div></div>'+
+        '<div class="pct">'+pct.toFixed(1)+'% do limite em uso</div>';
+    } else {
+      row.innerHTML =
+        '<div class="row-top"><span class="name">'+c.name+'</span><span class="figs tabular">'+fmtBRL0(c.spend)+' &middot; limite não cadastrado</span></div>'+
+        '<div class="bar-track"><div class="bar-fill unknown" style="width:100%"></div></div>'+
+        '<div class="pct" style="color:var(--critical)">sem limite na planilha — não dá para medir o uso real</div>';
+    }
+    cardListEl.appendChild(row);
+  });
+
+  // ---------------- CATEGORY BREAKDOWN ----------------
+  var cats = [
+    {name:"Trali (empresa)", value:5104.67, color:'--s1'},
+    {name:"Moradia", value:3781.62, color:'--s2'},
+    {name:"Lazer", value:3365.49, color:'--s3'},
+    {name:"Alimentação", value:3260.72, color:'--s4'},
+    {name:"Transportes", value:1682.67, color:'--s5'},
+    {name:"Saúde", value:1047.07, color:'--s6'},
+    {name:"Educação", value:998.18, color:'--s7'},
+    {name:"Outros (tarifas, pet, presentes)", value:987.70, color:'--s8'}
+  ];
+  var total = cats.reduce(function(a,c){return a+c.value;},0);
+  var catListEl = document.getElementById('cat-list');
+  var catTbody = document.getElementById('cat-table-body');
+  var maxVal = Math.max.apply(null, cats.map(function(c){return c.value;}));
+  cats.forEach(function(c){
+    var pct = (c.value/total)*100;
+    var widthPct = (c.value/maxVal)*100;
+    var item = document.createElement('div');
+    item.className = 'cat-item';
+    item.innerHTML =
+      '<span class="cname">'+c.name+'</span>'+
+      '<span class="cat-track"><span class="cat-fill" style="width:'+widthPct.toFixed(1)+'%; background:var('+c.color+')"></span></span>'+
+      '<span class="cval">'+fmtBRL0(c.value)+'</span>';
+    catListEl.appendChild(item);
+
+    var tr = document.createElement('tr');
+    tr.innerHTML = '<td>'+c.name+'</td><td class="num">'+fmtBRL(c.value)+'</td><td class="num">'+pct.toFixed(1)+'%</td>';
+    catTbody.appendChild(tr);
+  });
+
+  // ---------------- TABLE TOGGLES ----------------
+  document.querySelectorAll('[data-toggle]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var id = btn.getAttribute('data-toggle');
+      var table = document.getElementById(id);
+      var chart = table.previousElementSibling;
+      var showingTable = !table.classList.contains('hidden');
+      if (showingTable){
+        table.classList.add('hidden');
+        btn.textContent = 'Ver como tabela';
+      } else {
+        table.classList.remove('hidden');
+        btn.textContent = 'Ver como gráfico';
+      }
+      if (chart && (chart.id === 'trend-wrap' || chart.classList.contains('cat-list'))){
+        chart.classList.toggle('hidden');
+      }
+    });
+  });
+
+  // ---------------- FINDINGS ----------------
+  var findings = [
+    {sev:'critical', title:'1. Saldo conjunto das contas correntes ficou negativo', body:'Hoje (ciclo 09.2026) a soma das duas contas é -R$ 2.840,14 (Conta Thi R$ 196,54 + Conta Tati -R$ 3.036,68), revertendo o saldo positivo de R$ 1.335,26 de uma leitura anterior. A conta da Tatiane está no vermelho, sem mudança desde então.'},
+    {sev:'critical', title:'2. A transferência entre contas continua sem se repetir — e agora é definitiva', body:'Em 05/08/2026 saíram R$ 19.000,00 da conta da Tati como "Transferencia Thi", mas a conta do Thi só registrou entrada de R$ 11.275,35 — a diferença de R$ 7.724,65 continua sem explicação (coincidentemente o mesmo valor que aparece equivocado no painel-resumo de Trali, ver item 8). Como agosto já fechou (Pago), esse buraco agora é permanente e distorce toda a projeção: a conta do Thi cai para -R$ 25.178,48 em dez/26, enquanto a da Tati sobe para R$ 52.166,29 — ambos inalterados desde a leitura anterior. Recomendação: replicar a transferência (com o valor certo) como linha fixa em todos os meses futuros.'},
+    {sev:'critical', title:'3. Fundo de emergência ainda crítico — e o aumento não bate com nenhum lançamento', body:'R$ 2.192,53 cobrem menos de 2 dias de despesas médias (~R$ 44.322/mês, calculado sobre as saídas reais de jun-ago/26). O saldo tinha subido R$ 758,61 numa leitura anterior (era R$ 1.433,92), mas nenhum lançamento de aporte foi encontrado na planilha para explicar esse aumento — a origem ainda não foi confirmada. Os R$ 5.466,22 sacados via "Retirada de Emergência" em jun/jul (3 lançamentos: R$ 4.496,20 + R$ 70,00 + R$ 900,02) continuam sem reposição.'},
+    {sev:'warning', title:'4. Extrato do cartão Itaú está incompleto em agosto e em setembro', body:'A fatura de agosto do Itaú tem apenas 10 lançamentos somando R$ 1.728,65, mas a razão da conta do Thiago registra um pagamento de R$ 12.977,53 para essa fatura — um gap de R$ 11.248,88 em lançamentos que não estão na planilha, sem mudança. O ciclo aberto de setembro também está incompleto: o extrato soma R$ 1.226,20 contra R$ 1.544,69 do resumo de cartões — faltam R$ 318,49, repetindo o mesmo padrão já visto no ciclo anterior. Os outros 4 cartões batem exatamente com seus pagamentos registrados. Por isso este painel manteve julho/2026 como referência para a quebra por categoria.'},
+    {sev:'warning', title:'5. Gastos da empresa Trali misturados com o cartão pessoal', body:'Trali representa ~25% de cada fatura mensal: R$ 4.477,79 em junho, R$ 5.104,67 em julho/2026 (25,2% do total do mês) — tudo pago no cartão pessoal, sem conta ou cartão dedicado da empresa. Em agosto o valor registrado é R$ 1.872,68, mas isso reflete o extrato incompleto do Itaú (item 4), não uma redução real. Padrão idêntico ao da leitura anterior.'},
+    {sev:'warning', title:'6. R$ 3.040,02 em lançamentos sem categoria — sem mudança', body:'R$ 2.766,45 em 21 lançamentos sem categoria preenchida (a maioria parcelas futuras do Nubank Tati) somados a R$ 404,57 em 8 lançamentos marcados como "não sei" (concentrados na fatura do Itaú) — os mesmos valores de leituras anteriores, sinal de que a categorização ainda não avançou.'},
+    {sev:'note', title:'7. Grafias duplicadas fragmentam as categorias', body:'"Manunteção"/"Manutenção" (e variações "Manuntenção Predial"/"manutenção Predial"), "lazer"/"Lazer", "mercado"/"Mercado", "besteiras"/"Besteiras", "Tranferencia"/"Transferencia"/"Transferencias", "Reembolso"/"Reembolsos"/"reembolso", "Tarifas bancarias"/"Tarifas Bancarias"/"tarifas bancarias", "Infraestrutura"/"infraestrutura", "meninas"/"Meninas" e "Saude"/"Saúde" (sem acento nas transações do extrato Inter, com acento no painel-resumo) — cada grafia soma à parte, então nenhum total por categoria está completo. Sem mudança desde a leitura anterior.'},
+    {sev:'note', title:'8. Painel-resumo "Total por categoria" — Trali bate certinho agora, mas a causa raiz permanece', body:'O painel mostra Trali R$ 1.727,06 para o mês corrente (set/26), valor que bate exatamente com o extrato recalculado. O problema anterior (painel mostrando R$ 7.724,65) não aparece mais só porque o painel virou o mês — a origem provável, um lançamento "Reembolso Trali" de R$ 7.724,65 na conta corrente em agosto, continua nos dados e pode voltar a distorcer o painel se alguém selecionar agosto novamente.'},
+    {sev:'note', title:'9. Cinco lançamentos com "Carrão" no nome — divergência de valor da parcela sem mudança', body:'Aluguel recebido da Casa Carrão, financiamento "Parcela Casa Carrão", uma pendência "Apto Carrão" em 3x (já quitada), e contas de luz/gás separadas registradas apenas uma vez (em junho) — vale confirmar se são contratos distintos e se essas contas seguem ativas. A diferença de valor da parcela do financiamento segue em R$ 8,16 (R$ 2.525,25 na razão do Thi em agosto/setembro vs. R$ 2.533,41 no extrato do Inter em julho), inalterada.'},
+    {sev:'note', title:'10. Ponto de agosto no gráfico de saldo estava inflado por uma linha mal rotulada na planilha', body:'A leitura de hoje encontrou uma linha no razão da Tati rotulada "08.2026" ("Colégio meninas", saldo R$ 15.526,19) que, pela matemática do saldo corrido, na verdade encaixa na sequência de setembro — ela está fisicamente posicionada entre duas linhas de setembro e o cálculo de saldo só fecha se for tratada como tal. O fechamento real de agosto (última linha "Pago" da Tati) é R$ 4.211,87. Isso corrigiu o ponto de agosto no gráfico de tendência de R$ 17.031,05 (valor inflado por esse erro, usado em leituras anteriores) para R$ 5.716,73; os pontos de setembro a dezembro não foram afetados. Vale corrigir o rótulo de mês dessa linha na planilha para evitar o mesmo erro em leituras futuras.'}
+  ];
+  var resolved = [
+    {title:'Cartão Nubank (Thi) continua com limite cadastrado', body:'R$ 5.000,00 confirmado novamente na planilha — o "Disponível" negativo que aparecia antes segue resolvido.'},
+    {title:'Cartão Inter continua fora do rotativo', body:'O cartão que vinha acumulando "juros de mora" e "multa por atraso" (R$ 372,14 em julho, contra R$ 64,32 em junho) não registra nenhum encargo de rotativo desde então — nem em agosto, nem em setembro. Continue de olho, mas a piora parou.'}
+  ];
+  var sevLabel = {critical:'Crítico', warning:'Atenção', note:'Observação'};
+  var findEl = document.getElementById('finding-list');
+  findings.forEach(function(f){
+    var div = document.createElement('div');
+    div.className = 'finding';
+    div.innerHTML =
+      '<span class="sev '+f.sev+'">'+sevLabel[f.sev]+'</span>'+
+      '<div><h3>'+f.title+'</h3><p>'+f.body+'</p></div>';
+    findEl.appendChild(div);
+  });
+  var resolvedEl = document.getElementById('resolved-list');
+  resolved.forEach(function(f){
+    var div = document.createElement('div');
+    div.className = 'finding is-resolved';
+    div.innerHTML =
+      '<span class="sev good">Resolvido</span>'+
+      '<div><h3>'+f.title+'</h3><p>'+f.body+'</p></div>';
+    resolvedEl.appendChild(div);
+  });
+
+  // ---------------- ACTION PLAN ----------------
+  var plan = [
+    {horizon:'Imediato', sub:'esta semana', items:[
+      'Cobrir o saldo negativo da conta da Tati (-R$ 3.036,68) para evitar juros de cheque especial',
+      'Categorizar os R$ 3.040,02 em lançamentos "sem categoria" / "não sei"',
+      'Padronizar as grafias duplicadas de categoria (Manutenção, Lazer, Mercado, Besteiras, Transferencia, Reembolso, Tarifas bancárias, Infraestrutura, Meninas, Saúde)',
+      'Repor o fundo de emergência (R$ 2.192,53, menos de 2 dias de despesas) — hoje ele está sendo sacado, não reposto',
+      'Completar os lançamentos que faltam na fatura do Itaú de agosto/setembro (item 4)',
+      'Corrigir na planilha o rótulo de mês da linha "Colégio meninas" indevidamente marcada como 08.2026 (item 10)'
+    ]},
+    {horizon:'Curto prazo', sub:'30 a 90 dias', items:[
+      'Abrir conta e cartão dedicados à Trali e migrar os ~R$ 5 mil/mês de gasto da empresa',
+      'Replicar a transferência entre contas como linha fixa todo mês — e resolver a diferença de R$ 7.724,65 entre o que saiu (R$ 19.000) e o que entrou (R$ 11.275,35), antes que distorça ainda mais a projeção',
+      'Definir um teto mensal para Lazer (hoje R$ 3.365) e para Alimentação fora de casa',
+      'Confirmar se os lançamentos "Carrão" (inclusive a divergência de R$ 8,16 na parcela) correspondem a contratos distintos'
+    ]},
+    {horizon:'Médio prazo', sub:'3 a 12 meses', items:[
+      'Reconstruir o fundo de emergência até 3–6 meses de despesas fixas (R$ 31.500 a R$ 63.000)',
+      'Quitar as 10 parcelas restantes do Empréstimo Nubank (≈ R$ 10.595) antes de novos investimentos',
+      'Revisar assinaturas e parcelamentos de cauda longa (Google One, Amazon, Netflix, Vivo Easy x3, Catho, Academia)',
+      'Quitar o financiamento "Casa Carrão" ou reavaliar sua manutenção junto ao aluguel pago em Liber Village'
+    ]},
+    {horizon:'Longo prazo', sub:'independência financeira', items:[
+      'Destinar 15–20% da renda líquida (R$ 3.400–4.500/mês) a investimentos após reserva completa e dívidas caras quitadas',
+      'Começar por renda fixa pós-fixada de liquidez diária (Tesouro Selic / CDB) como reserva de oportunidade',
+      'Diversificar depois em IPCA+, FIIs e ações/ETFs conforme o prazo de cada objetivo',
+      'Formalizar a separação contábil PF/PJ da Trali para clareza tributária e de lucratividade real'
+    ]}
+  ];
+  var planEl = document.getElementById('plan-grid');
+  var checkSvg = '<svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  var saved = {};
+  try{ saved = JSON.parse(localStorage.getItem('painel-financeiro-plan') || '{}'); }catch(e){}
+  plan.forEach(function(col, ci){
+    var colEl = document.createElement('div');
+    colEl.className = 'plan-col';
+    var head = document.createElement('div');
+    head.innerHTML = '<div class="horizon">'+col.horizon+'</div><div class="horizon-sub">'+col.sub+'</div>';
+    colEl.appendChild(head);
+    col.items.forEach(function(txt, ii){
+      var key = ci+'-'+ii;
+      var it = document.createElement('div');
+      it.className = 'plan-item' + (saved[key] ? ' done' : '');
+      it.setAttribute('tabindex','0');
+      it.setAttribute('role','checkbox');
+      it.setAttribute('aria-checked', saved[key] ? 'true' : 'false');
+      it.innerHTML = '<span class="box">'+checkSvg+'</span><span class="txt">'+txt+'</span>';
+      function toggle(){
+        var done = it.classList.toggle('done');
+        it.setAttribute('aria-checked', done ? 'true' : 'false');
+        saved[key] = done;
+        try{ localStorage.setItem('painel-financeiro-plan', JSON.stringify(saved)); }catch(e){}
+      }
+      it.addEventListener('click', toggle);
+      it.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); } });
+      colEl.appendChild(it);
+    });
+    planEl.appendChild(colEl);
+  });
+})();
+</script>
+
