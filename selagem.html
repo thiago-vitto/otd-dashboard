@@ -242,10 +242,10 @@
     </div>
 
     <div class='issue'>
-      <span class='sev alta'>Aberta</span>
+      <span class='sev media'>Nota · correção</span>
       <div>
-        <h3>Divergência forte entre aba Controle e aba Dados a partir de 08/09</h3>
-        <p>A soma dos itens da aba Dados em 08/09 é <code>449</code> para Seladora 1 e <code>50</code> para Seladora 3 — bem abaixo da Produção lançada na aba Controle nesse dia (<code>1.176</code> e <code>543</code>). Além disso, a aba Dados não tem nenhuma linha para 09/09, 10/09 ou 11/09, mesmo com esses dias já fechados na aba Controle. Isso contradiz o item que um painel anterior havia marcado como concluído (backlog de 08/09 e 09/09 supostamente reconciliado) — o detalhamento por produto desses dias parece ter sido perdido ou nunca persistido na planilha, e a conferência precisa ser refeita.</p>
+        <h3>Falso alerta no painel de 14/09 sobre divergência Controle x Dados — já corrigido</h3>
+        <p>O painel anterior (14/09) reportou como "Aberta · alta" uma suposta divergência forte entre as abas Controle e Dados a partir de 08/09, e disse que a aba Dados não tinha nenhuma linha para 09/09, 10/09 e 11/09. Isso era um falso positivo: veio de uma ferramenta de leitura que trunca o conteúdo da aba Dados nas mesmas ~350 primeiras linhas, e não da planilha em si. Baixando o arquivo completo (exportação .xlsx, 1.020 linhas na aba Dados) e somando por data/seladora, os quatro dias reconciliam perfeitamente com a aba Controle: 08/09 (1.176 Sel.1 / 543 Sel.3), 09/09 (1.387 / 357), 10/09 (1.302 Sel.1, sem linha de Sel.3 — gap já conhecido, ver item abaixo) e 11/09 (1.133 / 237). Nenhum dado foi perdido; o item de plano de ação nº3 foi ajustado de volta.</p>
       </div>
     </div>
 
@@ -333,10 +333,10 @@
         <div class='plan-head'><h3>3. Fechar o detalhe da aba Dados no mesmo dia do lançamento da aba Controle</h3><span class='plan-tag'>Governança</span></div>
         <div class='fields'>
           <div class='field'><div class='k'>O quê</div><div class='v'>Checklist de fechamento do turno: só considerar o dia lançado depois que a soma da aba Dados por seladora bater com a Produção da aba Controle</div></div>
-          <div class='field'><div class='k'>Por quê</div><div class='v'>Um painel anterior havia registrado o backlog de 08/09 e 09/09 como reconciliado, mas a checagem deste painel mostra que 08/09 continua muito abaixo do total da Controle e que 09/09, 10/09 e 11/09 não têm nenhum item lançado na aba Dados — o detalhamento por produto voltou a ficar para trás e precisa ser fechado novamente</div></div>
+          <div class='field'><div class='k'>Por quê</div><div class='v'>08/09 a 11/09 já reconciliam corretamente com a aba Controle (conferido via exportação completa da planilha) — o checklist mantém esse padrão daqui pra frente e evita depender de uma leitura parcial da aba Dados para julgar se um dia está fechado</div></div>
           <div class='field'><div class='k'>Como</div><div class='v'>Conferência rápida (soma da aba Dados x Produção da aba Controle) antes de considerar o apontamento do dia como fechado</div></div>
           <div class='field'><div class='k'>Quem</div><div class='v'>Líder do turno Manhã</div></div>
-          <div class='field'><div class='k'>Quando</div><div class='v'>Imediato — reconciliar 08/09 a 11/09 e adotar o checklist a partir do próximo lançamento</div></div>
+          <div class='field'><div class='k'>Quando</div><div class='v'>A partir do próximo lançamento</div></div>
         </div>
       </div>
 
