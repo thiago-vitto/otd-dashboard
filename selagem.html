@@ -153,13 +153,13 @@
     </div>
     <div class='meta-line'>
       Fonte: <strong>Produtividade Selagem</strong> (Google Sheets)<br>
-      Painel atualizado em: <strong>13/09/2026 07:07</strong><br>
+      Painel atualizado em: <strong>14/09/2026 07:12</strong><br>
       Dados da planilha até: <strong>11/09/2026</strong> · visão <strong>mensal</strong>
     </div>
   </header>
 
   <section>
-    <h2>Situação do mês — setembro/2026 <span style='font-size:11px;color:var(--muted);text-transform:none;letter-spacing:0;'>(mês em andamento, dados até 11/09 — dia da execução excluído)</span></h2>
+    <h2>Situação do mês — setembro/2026 <span style='font-size:11px;color:var(--muted);text-transform:none;letter-spacing:0;'>(mês em andamento, dados até 11/09 — dia da execução excluído; sem novos lançamentos desde o painel de 13/09, pois 12 e 13/09 foram fim de semana)</span></h2>
     <div class='kpis'>
       <div class='kpi'>
         <div class='label'>Produção do mês x meta</div>
@@ -244,8 +244,16 @@
     <div class='issue'>
       <span class='sev alta'>Aberta</span>
       <div>
+        <h3>Divergência forte entre aba Controle e aba Dados a partir de 08/09</h3>
+        <p>A soma dos itens da aba Dados em 08/09 é <code>449</code> para Seladora 1 e <code>50</code> para Seladora 3 — bem abaixo da Produção lançada na aba Controle nesse dia (<code>1.176</code> e <code>543</code>). Além disso, a aba Dados não tem nenhuma linha para 09/09, 10/09 ou 11/09, mesmo com esses dias já fechados na aba Controle. Isso contradiz o item que um painel anterior havia marcado como concluído (backlog de 08/09 e 09/09 supostamente reconciliado) — o detalhamento por produto desses dias parece ter sido perdido ou nunca persistido na planilha, e a conferência precisa ser refeita.</p>
+      </div>
+    </div>
+
+    <div class='issue'>
+      <span class='sev alta'>Aberta</span>
+      <div>
         <h3>Seladora 3 sem nenhum lançamento em 10/09</h3>
-        <p>Nem a aba Controle nem a aba Dados têm qualquer registro de Seladora 3 em 10/09 (quinta-feira, dia útil, sem feriado). Seladora 1 lançou normalmente nesse dia (Meta 468 · Produção 1.302). Já é o terceiro painel seguido reportando esse gap sem correção — se não for lançado retroativamente até o fechamento de setembro, o total mensal de Seladora 3 fica subestimado, repetindo o padrão já visto em agosto (ver item abaixo).</p>
+        <p>Nem a aba Controle nem a aba Dados têm qualquer registro de Seladora 3 em 10/09 (quinta-feira, dia útil, sem feriado). Seladora 1 lançou normalmente nesse dia (Meta 468 · Produção 1.302). O gap já havia sido apontado no painel anterior (13/09) e segue sem correção retroativa — se não for lançado até o fechamento de setembro, o total mensal de Seladora 3 fica subestimado, repetindo o padrão já visto em agosto (ver item abaixo).</p>
       </div>
     </div>
 
@@ -253,7 +261,7 @@
       <span class='sev media'>Aberta</span>
       <div>
         <h3>Refugo não preenchido em 11/09 (Seladora 3)</h3>
-        <p>A linha mais recente do mês (Meta 200, Produção 237, Eficiência 118,5%) segue com a célula de Refugo em branco em vez de 0, sem correção desde o painel anterior (12/09). É a mesma falha já registrada em 07/08 (ver item abaixo) — impede afirmar com total certeza que o refugo desse lançamento é zero.</p>
+        <p>A linha mais recente do mês (Meta 200, Produção 237, Eficiência 118,5%) segue com a célula de Refugo em branco em vez de 0, sem correção desde o painel anterior. É a mesma falha já registrada em 07/08 (ver item abaixo) — impede afirmar com total certeza que o refugo desse lançamento é zero.</p>
       </div>
     </div>
 
@@ -277,7 +285,7 @@
       <span class='sev media'>Nota</span>
       <div>
         <h3>Resumo da aba Controle ainda é diário, não mensal, e o 'Total Refugo' parece desconectado</h3>
-        <p>Os campos 'Total Produzido / Total Refugo / Eficiência Média' da aba Controle mostram só o último dia lançado (agora 11/09: 1.370 / 8 / 177%), não o mês — e o campo 'Total Refugo' segue mostrando 8 mesmo com refugo lançado como 0 (ou em branco) em todos os dias de setembro na tabela diária, confirmando que ele não está de fato somando a tabela. É uma nota já documentada em painéis anteriores, não uma descoberta nova. Vale adicionar 'Meta do mês' e soma mensal na própria planilha e revisar essa fórmula.</p>
+        <p>Os campos 'Total Produzido / Total Refugo / Eficiência Média' da aba Controle mostram só o último dia lançado (11/09: 1.370 / 8 / 177%), não o mês — e o campo 'Total Refugo' segue mostrando 8 mesmo com refugo lançado como 0 (ou em branco) em todos os dias de setembro na tabela diária, confirmando que ele não está de fato somando a tabela. É uma nota já documentada em painéis anteriores, não uma descoberta nova. Vale adicionar 'Meta do mês' e soma mensal na própria planilha e revisar essa fórmula.</p>
       </div>
     </div>
 
@@ -296,7 +304,7 @@
       <div class='plan' style='opacity:.55;'>
         <div class='plan-head'><h3>Itens já concluídos <span style='color:var(--good);font-size:13px;'>✓</span></h3><span class='plan-tag'>Histórico</span></div>
         <div class='fields'>
-          <div class='field'><div class='k'>Feito</div><div class='v'>Cabeçalho da aba Dados, ligação dos totais, título corrigido, coluna Operador removida por decisão de processo, rótulo 'Célula' trocado para 'Seladora', Seladora 2 confirmada como backup, painel migrado para visão mensal com totais por seladora, fechamento do mês exclui o dia da execução, confirmado que só existe turno Manhã (Tarde/Noite não são turnos ativos), data <code>10/80</code> corrigida para <code>10/08</code> na aba Dados (Seladora 1 · TR-504 · 88 un), divergência Controle x Dados de 12/08 (Seladora 3 · TR-1560 · 25 un) corrigida, refugo em branco de 25/08 (Seladora 1 e Seladora 3) preenchido com 0, backlog de detalhe da aba Dados de 08/09 e 09/09 preenchido e reconciliado com a aba Controle</div></div>
+          <div class='field'><div class='k'>Feito</div><div class='v'>Cabeçalho da aba Dados, ligação dos totais, título corrigido, coluna Operador removida por decisão de processo, rótulo 'Célula' trocado para 'Seladora', Seladora 2 confirmada como backup, painel migrado para visão mensal com totais por seladora, fechamento do mês exclui o dia da execução, confirmado que só existe turno Manhã (Tarde/Noite não são turnos ativos), data <code>10/80</code> corrigida para <code>10/08</code> na aba Dados (Seladora 1 · TR-504 · 88 un), divergência Controle x Dados de 12/08 (Seladora 3 · TR-1560 · 25 un) corrigida, refugo em branco de 25/08 (Seladora 1 e Seladora 3) preenchido com 0</div></div>
         </div>
       </div>
       <div class='plan'>
@@ -314,7 +322,7 @@
         <div class='plan-head'><h3>2. Garantir Refugo sempre preenchido (mesmo com 0)</h3><span class='plan-tag'>Governança</span></div>
         <div class='fields'>
           <div class='field'><div class='k'>O quê</div><div class='v'>Validação de dados impedindo salvar linha na aba Controle sem valor em Refugo</div></div>
-          <div class='field'><div class='k'>Por quê</div><div class='v'>07/08 e agora 11/09 seguem/vieram em branco — o problema não foi de fato eliminado, apesar de a maioria dos lançamentos de setembro já vir correta</div></div>
+          <div class='field'><div class='k'>Por quê</div><div class='v'>07/08 e 11/09 seguem em branco — o problema não foi de fato eliminado, apesar de a maioria dos lançamentos de setembro já vir correta</div></div>
           <div class='field'><div class='k'>Como</div><div class='v'>Validação de dados do Google Sheets na coluna Refugo, com padrão 0</div></div>
           <div class='field'><div class='k'>Quem</div><div class='v'>Líderes de turno</div></div>
           <div class='field'><div class='k'>Quando</div><div class='v'>A partir do próximo lançamento</div></div>
@@ -325,10 +333,10 @@
         <div class='plan-head'><h3>3. Fechar o detalhe da aba Dados no mesmo dia do lançamento da aba Controle</h3><span class='plan-tag'>Governança</span></div>
         <div class='fields'>
           <div class='field'><div class='k'>O quê</div><div class='v'>Checklist de fechamento do turno: só considerar o dia lançado depois que a soma da aba Dados por seladora bater com a Produção da aba Controle</div></div>
-          <div class='field'><div class='k'>Por quê</div><div class='v'>O backlog identificado em painéis anteriores (08/09 e 09/09 com detalhe incompleto na aba Dados) foi corrigido e essas datas já reconciliam com a Controle — o checklist evita que esse atraso volte a se acumular nos próximos lançamentos</div></div>
+          <div class='field'><div class='k'>Por quê</div><div class='v'>Um painel anterior havia registrado o backlog de 08/09 e 09/09 como reconciliado, mas a checagem deste painel mostra que 08/09 continua muito abaixo do total da Controle e que 09/09, 10/09 e 11/09 não têm nenhum item lançado na aba Dados — o detalhamento por produto voltou a ficar para trás e precisa ser fechado novamente</div></div>
           <div class='field'><div class='k'>Como</div><div class='v'>Conferência rápida (soma da aba Dados x Produção da aba Controle) antes de considerar o apontamento do dia como fechado</div></div>
           <div class='field'><div class='k'>Quem</div><div class='v'>Líder do turno Manhã</div></div>
-          <div class='field'><div class='k'>Quando</div><div class='v'>A partir do próximo lançamento</div></div>
+          <div class='field'><div class='k'>Quando</div><div class='v'>Imediato — reconciliar 08/09 a 11/09 e adotar o checklist a partir do próximo lançamento</div></div>
         </div>
       </div>
 
@@ -336,7 +344,7 @@
         <div class='plan-head'><h3>4. Garantir lançamento diário das duas seladoras ativas (1 e 3)</h3><span class='plan-tag'>Processo</span></div>
         <div class='fields'>
           <div class='field'><div class='k'>O quê</div><div class='v'>Checklist de fechamento do turno Manhã: lançar uma linha por seladora ativa todo dia útil, mesmo com produção zero. Seladora 2 fica fora do checklist por ser backup</div></div>
-          <div class='field'><div class='k'>Por quê</div><div class='v'>12/08, 14/08 e 18/08 seguem sem nenhum registro de Seladora 3 e sem correção retroativa em agosto, e o mesmo gap em 10/09 já aparece pelo terceiro painel seguido sem correção — 'sem linha' virou 'sem produção' no total do mês em 4 dos dias úteis já cobertos por este painel</div></div>
+          <div class='field'><div class='k'>Por quê</div><div class='v'>12/08, 14/08 e 18/08 seguem sem nenhum registro de Seladora 3 e sem correção retroativa em agosto, e o mesmo gap em 10/09 já aparece pelo menos no segundo painel seguido sem correção — 'sem linha' virou 'sem produção' no total do mês em 4 dos dias úteis já cobertos por este painel</div></div>
           <div class='field'><div class='k'>Como</div><div class='v'>Rotina de apontamento no fim do turno, com aprovação do líder antes de fechar</div></div>
           <div class='field'><div class='k'>Quem</div><div class='v'>Líder do turno Manhã</div></div>
           <div class='field'><div class='k'>Quando</div><div class='v'>Contínuo</div></div>
@@ -378,5 +386,5 @@
     </div>
   </section>
 
-  <footer>PRODUTIVIDADE SELAGEM · VISÃO MENSAL · ATUALIZADO AUTOMATICAMENTE TODOS OS DIAS ÀS 07:00 · PAINEL POSTADO EM: 13/09/2026 07:07</footer>
+  <footer>PRODUTIVIDADE SELAGEM · VISÃO MENSAL · ATUALIZADO AUTOMATICAMENTE TODOS OS DIAS ÀS 07:00 · PAINEL POSTADO EM: 14/09/2026 07:12</footer>
 </div>
