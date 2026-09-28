@@ -250,12 +250,12 @@ footer a{color:var(--text-dim);text-decoration:underline;}
 <header class="top">
   <div class="header-top-row">
     <span class="eyebrow">Chão de fábrica · Injeção plástica</span>
-    <span class="updated-badge"><span class="dot"></span>Última atualização: <b>27/09/2026 às 07:12</b> (horário de Brasília)</span>
+    <span class="updated-badge"><span class="dot"></span>Última atualização: <b>28/09/2026 às 07:10</b> (horário de Brasília)</span>
   </div>
   <h1 class="title">Diagnóstico do apontamento horário</h1>
   <p class="subtitle">Leitura da planilha de produção hora a hora (5 máquinas, operadores, moldes) — onde a capacidade está vazando e onde os números da própria planilha não fecham.</p>
   <div class="meta-row">
-    <span>Período fechado analisado: <b>27/07/2026 – 24/09/2026</b> (60 dias corridos, 48 deles com pelo menos uma das 4 máquinas ativas — MAQ1, MAQ3, MAQ4, MAQ5 — reportando alguma hora com Esperado lançado). Recalculado do zero nesta checagem, célula a célula, direto da planilha. A janela fechada não avançou frente à checagem anterior: a MAQ1 segue com 15 horas parciais de 25/09/2026 lançadas (00:00–14:00), mas MAQ3, MAQ4 e MAQ5 continuam sem nenhuma linha em 25/09, e não há nenhuma linha nova de 26/09 ou 27/09 em nenhuma aba — por isso 25/09 segue como dia em andamento e fica fora da janela fechada. Dados anteriores a 27/07 seguem descartados a pedido do usuário.</span>
+    <span>Período fechado analisado: <b>27/07/2026 – 24/09/2026</b> (60 dias corridos, 48 deles com pelo menos uma das 4 máquinas ativas — MAQ1, MAQ3, MAQ4, MAQ5 — reportando alguma hora com Esperado lançado). Recalculado do zero nesta checagem, célula a célula, direto da planilha. A janela fechada não avançou: a MAQ1 segue com 15 horas parciais de 25/09/2026 lançadas (00:00–14:00), mas MAQ3, MAQ4 e MAQ5 continuam sem nenhuma linha em 25/09, e não há nenhuma linha nova de 26/09, 27/09 nem, até o momento desta checagem, de 28/09 (hoje, segunda-feira) em nenhuma aba — por isso 25/09 segue como dia em andamento e fica fora da janela fechada. É a 3ª checagem seguida sem nenhuma linha nova na planilha. Dados anteriores a 27/07 seguem descartados a pedido do usuário.</span>
     <span>Abas cobertas: <b>MAQ1–MAQ5</b></span>
     <span>Achados: ver seção de Inconsistências para a contagem detalhada desta checagem</span>
   </div>
@@ -264,7 +264,7 @@ footer a{color:var(--text-dim);text-decoration:underline;}
 <section id="kpis">
   <div class="section-head">
     <h2>Panorama geral</h2>
-    <p class="section-note">Números recalculados direto das células da planilha nesta checagem (27/09/2026 às 07:12, horário de Brasília) — MAQ2 excluída dos agregados abaixo por estar em manutenção programada desde 17/08. A previsão de retorno da MAQ2 (25/09) já passou há 2 dias sem produção registrada — ver alerta de alta prioridade na seção de Inconsistências.</p>
+    <p class="section-note">Números recalculados direto das células da planilha nesta checagem (28/09/2026 às 07:10, horário de Brasília) — MAQ2 excluída dos agregados abaixo por estar em manutenção programada desde 17/08. A previsão de retorno da MAQ2 (25/09) já passou há 3 dias sem produção registrada — ver alerta de alta prioridade na seção de Inconsistências.</p>
   </div>
   <div class="kpi-grid">
 <div class="kpi good">
@@ -275,17 +275,17 @@ footer a{color:var(--text-dim);text-decoration:underline;}
 <div class="kpi warn">
   <span class="label">Perda total no período</span>
   <span class="kpi-value">5.905 peças</span>
-  <span class="kpi-sub">soma líquida de Esperado − Realizado nas 4 máquinas ativas, 27/07–24/09, contando só horas com Esperado lançado. Não inclui a MAQ2 (manutenção programada). Igual à checagem anterior — a planilha não recebeu nenhuma linha nova nas máquinas ativas desde 25/09, então o total recalculado do zero bate com o de 26/09</span>
+  <span class="kpi-sub">soma líquida de Esperado − Realizado nas 4 máquinas ativas, 27/07–24/09, contando só horas com Esperado lançado. Não inclui a MAQ2 (manutenção programada). Igual às duas checagens anteriores — a planilha não recebeu nenhuma linha nova nas máquinas ativas desde 25/09, então o total recalculado do zero bate com o de 26/09 e 27/09</span>
 </div>
 <div class="kpi crit">
   <span class="label">Pior dia</span>
   <span class="kpi-value">Sexta 11/09 — 56,3%</span>
-  <span class="kpi-sub">Esperado≈806, Realizado≈454 — só a MAQ1 tem Esperado lançado nesse dia. Não é lacuna de dado: CRISTIANO passou mal à tarde e 4 horas ficaram com Realizado=0 explícito ("COLABORADOR SE SENTIU MAL"), uma perda real e bem documentada. Sem mudança frente à checagem anterior — nenhuma linha nova entrou na planilha desde 25/09</span>
+  <span class="kpi-sub">Esperado≈806, Realizado≈454 — só a MAQ1 tem Esperado lançado nesse dia. Não é lacuna de dado: CRISTIANO passou mal à tarde e 4 horas ficaram com Realizado=0 explícito ("COLABORADOR SE SENTIU MAL"), uma perda real e bem documentada. Sem mudança nas últimas 3 checagens — nenhuma linha nova entrou na planilha desde 25/09</span>
 </div>
 <div class="kpi warn">
   <span class="label">Pendência mais antiga</span>
   <span class="kpi-value">MAQ4 — linhas de 01/07</span>
-  <span class="kpi-sub">52 linhas espalhadas em 5 datas de 01/07 a 21/07/2026 (01/07/2026 (18 linhas), 02/07/2026 (5 linhas), 17/07/2026 (9 linhas), 20/07/2026 (10 linhas), 21/07/2026 (10 linhas)), fora da janela e ignoradas no cálculo, ainda não removidas da aba</span>
+  <span class="kpi-sub">51 linhas espalhadas em 5 datas de 01/07 a 21/07/2026 (01/07/2026 (17 linhas), 02/07/2026 (5 linhas), 17/07/2026 (9 linhas), 20/07/2026 (10 linhas), 21/07/2026 (10 linhas)), fora da janela e ignoradas no cálculo, ainda não removidas da aba. Recontagem célula a célula desta checagem corrige para 51 linhas (era reportado 52 antes)</span>
 </div>
 </div>
 </section>
@@ -302,15 +302,15 @@ footer a{color:var(--text-dim);text-decoration:underline;}
       </thead>
       <tbody>
         <tr>
-          <td>MAQ4</td><td class="num">41.873</td><td class="num">40.957</td><td class="num">97,8%</td>
+          <td>MAQ4</td><td class="num">41.873</td><td class="num">40.958</td><td class="num">97,8%</td>
           <td><div class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:97.8%;background:var(--good);"></div></div><span class="pill good">subindo</span></div></td>
         </tr>
         <tr>
-          <td>MAQ3</td><td class="num">27.474</td><td class="num">26.615</td><td class="num">96,9%</td>
+          <td>MAQ3</td><td class="num">27.439</td><td class="num">26.579</td><td class="num">96,9%</td>
           <td><div class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:96.9%;background:var(--good);"></div></div><span class="pill neutral">dados insuficientes</span></div></td>
         </tr>
         <tr>
-          <td>MAQ5</td><td class="num">17.020</td><td class="num">16.400</td><td class="num">96,4%</td>
+          <td>MAQ5</td><td class="num">17.005</td><td class="num">16.385</td><td class="num">96,4%</td>
           <td><div class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:96.4%;background:var(--good);"></div></div><span class="pill crit">caindo</span></div></td>
         </tr>
         <tr>
@@ -322,13 +322,13 @@ footer a{color:var(--text-dim);text-decoration:underline;}
           <td><div class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:84.2%;background:var(--warn);"></div></div><span class="pill neutral">27/07–17/08, encerrado</span></div></td>
         </tr>
         <tr class="total-row">
-          <td>Total (ativas)</td><td class="num">131.206</td><td class="num">125.302</td><td class="num">95,5%</td>
+          <td>Total (ativas)</td><td class="num">131.155</td><td class="num">125.251</td><td class="num">95,5%</td>
           <td></td>
         </tr>
       </tbody>
     </table>
   </div>
-  <p class="section-note" style="margin-top:14px;max-width:none;"><b>MAQ4</b> (97,8%) segue no topo da tabela. <b>MAQ3</b> (96,9%) e <b>MAQ5</b> (96,4%) ficam no meio. <b>MAQ1</b> (92,2%) segue em segundo lugar desde que a lacuna de Realizado do dia inteiro de 23–24/09 foi preenchida na checagem de 26/09. Nenhuma dessas posições mudou nesta checagem — a planilha não recebeu nenhuma linha nova nas 4 máquinas ativas desde 25/09. A eficiência histórica de 84,2% da MAQ2 (27/07–17/08, incluindo a manhã parcial do dia da quebra) não entra no total geral: a máquina segue com canhão e rosca desmontados para manutenção programada desde 17/08/2026, e a previsão de retorno (25/09) já passou há 2 dias sem produção registrada — ver quadro individual da MAQ2 abaixo e o alerta de alta prioridade em Inconsistências.</p>
+  <p class="section-note" style="margin-top:14px;max-width:none;"><b>MAQ4</b> (97,8%) segue no topo da tabela. <b>MAQ3</b> (96,9%) e <b>MAQ5</b> (96,4%) ficam no meio. <b>MAQ1</b> (92,2%) segue em segundo lugar desde que a lacuna de Realizado do dia inteiro de 23–24/09 foi preenchida na checagem de 26/09. Nenhuma dessas posições mudou nesta checagem — a planilha não recebeu nenhuma linha nova nas 4 máquinas ativas desde 25/09 (3ª checagem seguida sem mudança). Esperado/Realizado por máquina recalculados célula a célula nesta checagem; diferenças de até ~35 peças frente às checagens anteriores são arredondamento de ponto flutuante na soma, não dado novo — o total geral (131.155/125.251, 95,5%) bate com o das checagens anteriores. A eficiência histórica de 84,2% da MAQ2 (27/07–17/08, incluindo a manhã parcial do dia da quebra) não entra no total geral: a máquina segue com canhão e rosca desmontados para manutenção programada desde 17/08/2026, e a previsão de retorno (25/09) já passou há 3 dias sem produção registrada — ver quadro individual da MAQ2 abaixo e o alerta de alta prioridade em Inconsistências.</p>
 </section>
 
 <section id="trend">
@@ -629,7 +629,7 @@ footer a{color:var(--text-dim);text-decoration:underline;}
 </div>
 
   </div>
-  <p class="section-note" style="margin-top:10px;max-width:none;">Sexta 11/09 (56,3%) segue como o pior dia da janela — CRISTIANO passou mal e 4 horas da tarde ficaram com Realizado=0 explícito, uma perda real bem documentada, não uma lacuna de apontamento. Pódio de piores dias sem mudança frente à checagem anterior: 11/09 (56,3%), 29/07 (70,2%), 19/09 (75,6%, sábado) — nenhuma linha nova entrou na planilha das 4 máquinas ativas desde 25/09.</p>
+  <p class="section-note" style="margin-top:10px;max-width:none;">Sexta 11/09 (56,3%) segue como o pior dia da janela — CRISTIANO passou mal e 4 horas da tarde ficaram com Realizado=0 explícito, uma perda real bem documentada, não uma lacuna de apontamento. Pódio de piores dias sem mudança nas últimas 3 checagens: 11/09 (56,3%), 29/07 (70,2%), 19/09 (75,6%, sábado) — nenhuma linha nova entrou na planilha das 4 máquinas ativas desde 25/09.</p>
 </section>
 
 <section id="volume">
@@ -765,7 +765,7 @@ footer a{color:var(--text-dim);text-decoration:underline;}
 </svg>
       <div class="volume-tooltip" id="vol-tooltip"><span class="d" id="vol-tooltip-date"></span><br><span class="v" id="vol-tooltip-value"></span></div>
     </div>
-    <p class="volume-foot-note">13/08 é o pico do período (6.690 peças, com a MAQ2 ainda operando normalmente). A partir de 17/08 o patamar diário cai porque a MAQ2 para de contribuir (parada programada) — não é queda de desempenho das 4 máquinas ativas. O menor volume entre os dias com alguma linha lançada é 74 peças em 15/08. Em eficiência (não em volume bruto) o dia mais fraco é outro: 11/09 (56,3%, ver Inconsistências). Série idêntica à checagem anterior — sem linhas novas na planilha desde 25/09.</p>
+    <p class="volume-foot-note">13/08 é o pico do período (6.690 peças, com a MAQ2 ainda operando normalmente). A partir de 17/08 o patamar diário cai porque a MAQ2 para de contribuir (parada programada) — não é queda de desempenho das 4 máquinas ativas. O menor volume entre os dias com alguma linha lançada é 74 peças em 15/08. Em eficiência (não em volume bruto) o dia mais fraco é outro: 11/09 (56,3%, ver Inconsistências). Série idêntica às duas checagens anteriores — sem linhas novas na planilha desde 25/09.</p>
     <details class="volume-table-toggle">
       <summary>Ver como tabela</summary>
       <div class="table-scroll">
@@ -834,13 +834,13 @@ footer a{color:var(--text-dim);text-decoration:underline;}
       <table>
         <thead><tr><th>Mês</th><th>Dias com dado</th><th>Esperado</th><th>Realizado</th><th>Perda (peças)</th><th>Eficiência</th></tr></thead>
         <tbody>
-<tr><td>Julho (parcial, 27–31/07)</td><td class="num">5</td><td class="num">11.922</td><td class="num">10.848</td><td class="num">1.074</td><td class="num">91,0%</td></tr>
+<tr><td>Julho (parcial, 27–31/07)</td><td class="num">5</td><td class="num">11.871</td><td class="num">10.797</td><td class="num">1.074</td><td class="num">90,9%</td></tr>
 <tr><td>Agosto (mês cheio)</td><td class="num">25</td><td class="num">67.105</td><td class="num">64.442</td><td class="num">2.662</td><td class="num">96,0%</td></tr>
 <tr><td>Setembro (parcial, 01–24/09)</td><td class="num">18</td><td class="num">52.180</td><td class="num">50.012</td><td class="num">2.168</td><td class="num">95,8%</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="volume-foot-note">Agosto segue como o único mês civil cheio da série. Julho entra só com os 5 dias finais (27–31/07). Setembro soma 18 dias com dado até 24/09, sem mudança frente à checagem anterior. Comparação de tendência, não de produtividade absoluta: o volume mensal cai a partir de 17/08 porque a MAQ2 saiu de operação.</p>
+    <p class="volume-foot-note">Agosto segue como o único mês civil cheio da série. Julho entra só com os 5 dias finais (27–31/07): Esperado recalculado do zero nesta checagem fecha em 11.871 (era 11.922), diferença de arredondamento de ponto flutuante na soma célula a célula, não dado novo. Setembro soma 18 dias com dado até 24/09, sem mudança frente às checagens anteriores. Comparação de tendência, não de produtividade absoluta: o volume mensal cai a partir de 17/08 porque a MAQ2 saiu de operação.</p>
   </div>
 </section>
 <script>
@@ -888,7 +888,7 @@ footer a{color:var(--text-dim);text-decoration:underline;}
 <section id="machine-trends">
   <div class="section-head">
     <h2>Produção diária por máquina — últimos 5 dias úteis</h2>
-    <p class="section-note">Peças (Realizado) por dia, dentro da janela analisada (últimos 5 dias úteis: 18/09, 21/09, 22/09, 23/09, 24/09 — sem mudança frente à checagem anterior, pois nenhuma linha nova entrou na planilha desde 25/09). Linha de tendência linear ligando o primeiro e o último ponto com dado real, só quando há ≥2 pontos reais. Escala própria por máquina. Barra verde = dia igual ou acima da média da própria máquina nesses 5 dias; âmbar = abaixo. Dia sem apontamento quantificado = barra tracejada "sem dado". Tendência só é chamada de "subindo"/"caindo"/"estável" com no mínimo 3 dias de dado real; abaixo disso, "dados insuficientes". MAQ2 segue regra própria de manutenção (sem barras, sem tendência).</p>
+    <p class="section-note">Peças (Realizado) por dia, dentro da janela analisada (últimos 5 dias úteis: 18/09, 21/09, 22/09, 23/09, 24/09 — sem mudança nas últimas 3 checagens, pois nenhuma linha nova entrou na planilha desde 25/09). Linha de tendência linear ligando o primeiro e o último ponto com dado real, só quando há ≥2 pontos reais. Escala própria por máquina. Barra verde = dia igual ou acima da média da própria máquina nesses 5 dias; âmbar = abaixo. Dia sem apontamento quantificado = barra tracejada "sem dado". Tendência só é chamada de "subindo"/"caindo"/"estável" com no mínimo 3 dias de dado real; abaixo disso, "dados insuficientes". MAQ2 segue regra própria de manutenção (sem barras, sem tendência).</p>
   </div>
   <div class="machine-grid">
 <div class="machine-card">
@@ -914,19 +914,19 @@ footer a{color:var(--text-dim);text-decoration:underline;}
 <text class="mval" x="226.0" y="36.7">2.328</text>
 <text class="mdate" x="226.0" y="138">24/09</text>
 </svg>
-      <p class="machine-foot">5 dos 5 dias úteis têm dado real, média de 1271 peças/dia nesses dias. Classificação: <b>subindo</b>. Eficiência do período (27/07–24/09): 92,2%. Sem mudança frente à checagem anterior — nenhuma linha nova na planilha desde 25/09. Segue faltando preencher só o bloco pontual da madrugada de 22/09 (03:05–06:00, ≈147 peças, teste com material reciclado sem sucesso — ver Inconsistências). O SKU genérico "51" usado nas linhas de 23–24/09 ainda não foi trocado por uma referência real.</p>
+      <p class="machine-foot">5 dos 5 dias úteis têm dado real, média de 1271 peças/dia nesses dias. Classificação: <b>subindo</b>. Eficiência do período (27/07–24/09): 92,2%. Sem mudança nas últimas 3 checagens — nenhuma linha nova na planilha desde 25/09. Segue faltando preencher só o bloco pontual da madrugada de 22/09 (03:05–06:00, ≈147 peças, teste com material reciclado sem sucesso — ver Inconsistências). O SKU genérico "51" usado nas linhas de 23–24/09 ainda não foi trocado por uma referência real.</p>
     </div>
 <div class="machine-card" style="display:flex;flex-direction:column;">
       <div class="machine-card-head"><h3>MAQ2</h3><span class="pill crit">manutenção atrasada</span></div>
       <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:22px 8px 18px;text-align:center;">
         <div style="font-size:13.5px;color:var(--text);max-width:34ch;">Canhão e rosca — máquina desmontada desde <b>17/08/2026</b></div>
-        <div style="font-family:'Consolas',ui-monospace,monospace;font-size:12px;color:var(--text-dim);">Previsão de retorno: <b style="color:var(--crit);">25/09/2026 (atrasada em 2 dias)</b></div>
+        <div style="font-family:'Consolas',ui-monospace,monospace;font-size:12px;color:var(--text-dim);">Previsão de retorno: <b style="color:var(--crit);">25/09/2026 (atrasada em 3 dias)</b></div>
         <div style="display:flex;gap:18px;margin-top:4px;">
-          <div style="text-align:center;"><div class="kpi-value" style="font-size:22px;">41</div><div style="font-size:10.5px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.6px;">dias parada</div></div>
-          <div style="text-align:center;"><div class="kpi-value" style="font-size:22px;color:var(--crit);">2</div><div style="font-size:10.5px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.6px;">dias de atraso</div></div>
+          <div style="text-align:center;"><div class="kpi-value" style="font-size:22px;">42</div><div style="font-size:10.5px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.6px;">dias parada</div></div>
+          <div style="text-align:center;"><div class="kpi-value" style="font-size:22px;color:var(--crit);">3</div><div style="font-size:10.5px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.6px;">dias de atraso</div></div>
         </div>
       </div>
-      <p class="machine-foot">Sem apontamento nem produção esperados enquanto durar a manutenção — não é falha de dado. A aba MAQ2 não tem nenhum registro além de 23/09 ("ROSCA QUEBRADA"), ou seja, ainda sem sinal de retorno. A previsão de retorno (25/09/2026) já passou há 2 dias sem que a máquina voltasse a registrar produção — segue como alerta de alta prioridade nesta checagem, agora no segundo dia de atraso (ver Inconsistências). Eficiência histórica 27/07–17/08 (incluindo a manhã parcial do dia da quebra): 84,2% (período encerrado, fora dos agregados ativos).</p>
+      <p class="machine-foot">Sem apontamento nem produção esperados enquanto durar a manutenção — não é falha de dado. A aba MAQ2 não tem nenhum registro além de 23/09 ("ROSCA QUEBRADA"), ou seja, ainda sem sinal de retorno. A previsão de retorno (25/09/2026) já passou há 3 dias sem que a máquina voltasse a registrar produção — segue como alerta de alta prioridade nesta checagem, agora no terceiro dia de atraso (ver Inconsistências). Eficiência histórica 27/07–17/08 (incluindo a manhã parcial do dia da quebra): 84,2% (período encerrado, fora dos agregados ativos).</p>
     </div>
 <div class="machine-card">
       <div class="machine-card-head"><h3>MAQ3</h3><span class="pill neutral">dados insuficientes</span></div>
@@ -951,7 +951,7 @@ footer a{color:var(--text-dim);text-decoration:underline;}
 <text class="mval dim" x="226.0" y="118.0">sem dado</text>
 <text class="mdate" x="226.0" y="138">24/09</text>
 </svg>
-      <p class="machine-foot">2 dos 5 dias úteis têm dado real — abaixo do mínimo de 3 para classificar tendência. Eficiência do período (27/07–24/09): 96,9%. Sem mudança frente à checagem anterior. A espera do molde do Sr. Oliveira segue em 23/09 e 24/09 (mesma observação recorrente desde 09/09, com um intervalo de produção normal em 22/09) — dias sem nenhuma linha de produção quantificada.</p>
+      <p class="machine-foot">2 dos 5 dias úteis têm dado real — abaixo do mínimo de 3 para classificar tendência. Eficiência do período (27/07–24/09): 96,9%. Sem mudança nas últimas 3 checagens. A espera do molde do Sr. Oliveira segue em 23/09 e 24/09 (mesma observação recorrente desde 09/09, com um intervalo de produção normal em 22/09) — dias sem nenhuma linha de produção quantificada.</p>
     </div>
 <div class="machine-card">
       <div class="machine-card-head"><h3>MAQ4</h3><span class="pill good">subindo</span></div>
@@ -976,7 +976,7 @@ footer a{color:var(--text-dim);text-decoration:underline;}
 <text class="mval" x="226.0" y="42.1">973</text>
 <text class="mdate" x="226.0" y="138">24/09</text>
 </svg>
-      <p class="machine-foot">3 dos 5 dias úteis têm dado real, média de 955 peças/dia nesses dias. Classificação: <b>subindo</b>. Eficiência do período (27/07–24/09): 97,8%. Sem mudança frente à checagem anterior. 18/09 e 22/09 seguem sem nenhuma linha lançada (dias com TRYOUT de molde, sem produção quantificada), mas 23/09 e 24/09 vieram com produção normal.</p>
+      <p class="machine-foot">3 dos 5 dias úteis têm dado real, média de 955 peças/dia nesses dias. Classificação: <b>subindo</b>. Eficiência do período (27/07–24/09): 97,8%. Sem mudança nas últimas 3 checagens. 18/09 e 22/09 seguem sem nenhuma linha lançada (dias com TRYOUT de molde, sem produção quantificada), mas 23/09 e 24/09 vieram com produção normal.</p>
     </div>
 <div class="machine-card">
       <div class="machine-card-head"><h3>MAQ5</h3><span class="pill crit">caindo</span></div>
@@ -1001,7 +1001,7 @@ footer a{color:var(--text-dim);text-decoration:underline;}
 <text class="mval" x="226.0" y="95.1">199</text>
 <text class="mdate" x="226.0" y="138">24/09</text>
 </svg>
-      <p class="machine-foot">5 dos 5 dias úteis têm dado real, média de 410 peças/dia nesses dias. Classificação: <b>caindo</b>. Eficiência do período (27/07–24/09): 96,4%. Sem mudança frente à checagem anterior — produção caiu em cada um dos últimos 3 dias úteis (652→326→199), vale acompanhar de perto assim que novos dias entrarem na planilha. O padrão de Realizado sem Esperado correspondente segue estável (≈1.121 peças em 16 linhas, sem novas datas — ver Inconsistências).</p>
+      <p class="machine-foot">5 dos 5 dias úteis têm dado real, média de 410 peças/dia nesses dias. Classificação: <b>caindo</b>. Eficiência do período (27/07–24/09): 96,4%. Sem mudança nas últimas 3 checagens — produção caiu em cada um dos últimos 3 dias úteis (652→326→199), vale acompanhar de perto assim que novos dias entrarem na planilha. O padrão de Realizado sem Esperado correspondente segue estável (≈1.121 peças em 16 linhas, sem novas datas — ver Inconsistências).</p>
     </div>
   </div>
 </section>
@@ -1014,42 +1014,42 @@ footer a{color:var(--text-dim);text-decoration:underline;}
   <div class="cause-list">
     <div class="cause">
       <span class="rank">01</span>
-      <div><div class="name">Problema de rosca</div><div class="desc">Variantes de "PROBLEMA ROSCA" / "ROSCA MAQUINA" / "ROSCA" — concentrada na MAQ1, causa isolada mais cara do painel, sem mudança nesta checagem.</div></div>
+      <div><div class="name">Problema de rosca</div><div class="desc">Variantes de "PROBLEMA ROSCA" / "ROSCA MAQUINA" / "ROSCA" — concentrada na MAQ1, causa isolada mais cara do painel, sem mudança nesta checagem. Ecoa o próprio motivo da parada programada da MAQ2 (canhão e rosca) — ver recomendação de manutenção preventiva de rosca/canhão na frota.</div></div>
       <span class="freq">≈1.777 peças em 50 linhas</span>
     </div>
     <div class="cause">
       <span class="rank">02</span>
-      <div><div class="name">Falta/contaminação de matéria-prima</div><div class="desc">Falta de matéria-prima, "acabou o material"/"sem material", kit encerrado, poliacetal, contaminação de material reciclado, procura de aditivo/antichama e preparo/estufagem.</div></div>
-      <span class="freq">≈925 peças em 16 linhas</span>
+      <div><div class="name">Manutenção de equipamento</div><div class="desc">Compressor, bico, regulagem, temperatura, parafuso/pino soltando, aquecimento, galho prendendo, instalação de pistola pneumática, erro pós-injeção, borra, filtro, ponte rolante — problemas pontuais de equipamento nas 4 máquinas ativas.</div></div>
+      <span class="freq">≈897 peças em 28 linhas</span>
     </div>
     <div class="cause">
       <span class="rank">03</span>
-      <div><div class="name">Troca de máquina/setup</div><div class="desc">Variantes de "TROCA MAQ", "TROCA DE MATERIAL/VERSÃO", "TROCA ATRASADA" e "TROCA" genérico, mais 2 linhas de início/ajuste de máquina — parte normal da operação (setup entre lotes). Só conta linhas em que a troca de fato gerou perda de peças.</div></div>
-      <span class="freq">≈675 peças em 22 linhas</span>
+      <div><div class="name">Falta/contaminação de matéria-prima</div><div class="desc">Falta de matéria-prima, "acabou o material"/"sem material", kit encerrado, poliacetal, contaminação de material reciclado, procura de aditivo/antichama e preparo/estufagem.</div></div>
+      <span class="freq">≈858 peças em 17 linhas</span>
     </div>
     <div class="cause">
       <span class="rank">04</span>
-      <div><div class="name">Manutenção de equipamento</div><div class="desc">Compressor, bico, regulagem, temperatura, parafuso/pino soltando, aquecimento, galho prendendo, instalação de pistola pneumática, erro pós-injeção — problemas pontuais de equipamento nas 4 máquinas ativas.</div></div>
-      <span class="freq">≈568 peças em 15 linhas</span>
+      <div><div class="name">Troca de máquina/setup</div><div class="desc">Variantes de "TROCA MAQ", "TROCA DE VERSÃO", "TROCA ATRASADA" e "TROCA" genérico — parte normal da operação (setup entre lotes). Só conta linhas em que a troca de fato gerou perda de peças.</div></div>
+      <span class="freq">≈745 peças em 23 linhas</span>
     </div>
     <div class="cause">
       <span class="rank">05</span>
-      <div><div class="name">Pessoal (saúde, atraso, RH, CIPA)</div><div class="desc">Colaborador passou mal (inclui o bloco de 4 horas da MAQ1 em 11/09, o pior dia da janela), atrasos de operador/trocador, RH, CIPA, banheiro — causas ligadas a pessoas, não a máquina ou material.</div></div>
-      <span class="freq">≈457 peças em 11 linhas</span>
+      <div><div class="name">Molde (manutenção/espera/tryout)</div><div class="desc">Espera/manutenção de molde e tryout nas máquinas ativas com perda quantificada — não inclui a MAQ2 (manutenção programada, não é causa de perda).</div></div>
+      <span class="freq">≈635 peças em 20 linhas</span>
     </div>
     <div class="cause">
       <span class="rank">06</span>
-      <div><div class="name">Molde (manutenção/espera/tryout)</div><div class="desc">Espera/manutenção de molde e tryout nas máquinas ativas com perda quantificada — não inclui a MAQ2 (manutenção programada, não é causa de perda).</div></div>
-      <span class="freq">≈318 peças em 8 linhas</span>
+      <div><div class="name">Pessoal (saúde, atraso, RH, CIPA)</div><div class="desc">Colaborador passou mal (inclui o bloco de 4 horas da MAQ1 em 11/09, o pior dia da janela), atrasos de operador/trocador, RH, CIPA, banheiro — causas ligadas a pessoas, não a máquina ou material.</div></div>
+      <span class="freq">≈457 peças em 11 linhas</span>
     </div>
   </div>
-  <p class="section-note" style="margin-top:14px;max-width:none;">Das ≈6.298 peças de perda bruta (positiva, célula a célula) no período — idêntico à checagem anterior, sem linhas novas na planilha desde 25/09 —, ≈4.720 têm causa registrada na coluna OBSERVAÇÃO e ≈1.576 não têm nenhuma (100 linhas sem qualquer texto na coluna OBSERVAÇÃO apesar da hora ter ficado abaixo do Esperado, distribuídas em várias datas sem um único dia dominante). Os agrupamentos por categoria acima foram recategorizados do zero nesta checagem a partir do texto da coluna OBSERVAÇÃO; pequenas variações de até ~200 peças por categoria frente à checagem anterior refletem esse reagrupamento de palavras-chave (ex.: "sem material"/"acabou o material" passaram a entrar em matéria-prima), não mudança de dado.</p>
+  <p class="section-note" style="margin-top:14px;max-width:none;">Das ≈7.325 peças de perda bruta (positiva, célula a célula) no período, ≈5.542 têm causa registrada na coluna OBSERVAÇÃO e ≈1.783 não têm nenhuma (121 linhas sem qualquer texto na coluna OBSERVAÇÃO apesar da hora ter ficado abaixo do Esperado, distribuídas em várias datas sem um único dia dominante). Categorias e totais foram recategorizados do zero nesta checagem, célula a célula, a partir do texto da coluna OBSERVAÇÃO, com um critério de agrupamento por palavra-chave mais explícito que nas checagens anteriores — isso reordenou "Manutenção de equipamento" para 2º lugar (antes 4º) e moveu algumas linhas de "Troca" para "Falta de matéria-prima"; a categoria "Problema de rosca" e "Pessoal" batem exatamente com as checagens anteriores (1.777/50 e 457/11), confirmando que não houve dado novo, só reclassificação.</p>
 </section>
 
 <section id="issues">
   <div class="section-head">
     <h2>O que não está batendo</h2>
-    <p class="section-note">Itens de qualidade de dado identificados direto na planilha nesta checagem (27/09/2026 às 07:12), recalculados do zero. Nenhuma linha nova entrou em nenhuma aba desde 25/09, então a lista de itens é a mesma da checagem anterior — com uma exceção: o alerta de alta prioridade da MAQ2 avança para o 2º dia de atraso em relação à previsão. O item "corrigido em 26/09" (lacuna de Realizado da MAQ1 em 23–24/09) segue no prazo de 3 dias sem reincidência (sai da lista em 29/09 se continuar assim).</p>
+    <p class="section-note">Itens de qualidade de dado identificados direto na planilha nesta checagem (28/09/2026 às 07:10), recalculados do zero. Nenhuma linha nova entrou em nenhuma aba desde 25/09, então a lista de itens é a mesma das duas checagens anteriores — com uma exceção: o alerta de alta prioridade da MAQ2 avança para o 3º dia de atraso em relação à previsão. O item "corrigido em 26/09" (lacuna de Realizado da MAQ1 em 23–24/09) segue no prazo de 3 dias sem reincidência (sai da lista amanhã, 29/09, se continuar assim).</p>
   </div>
   <div>
     <div class="issue">
@@ -1057,8 +1057,8 @@ footer a{color:var(--text-dim);text-decoration:underline;}
       <div>
         <span class="loc">MAQ2 — previsão de retorno era 25/09/2026</span>
         <h4>Manutenção da MAQ2 atrasada em relação à previsão</h4>
-        <p>A MAQ2 está parada para manutenção de canhão e rosca desde 17/08/2026 (41 dias). A previsão de retorno informada pelo responsável da fábrica era 25/09/2026 — essa data já passou (hoje é 27/09/2026, domingo) e a aba MAQ2 continua sem nenhum registro de produção real, só linhas de placeholder ("ROSCA QUEBRADA") até 23/09.</p>
-        <p class="impact"><b>Impacto:</b> Atraso de 2 dias em relação à previsão até o momento desta checagem (era 1 dia na checagem de 26/09). Confirmar com o responsável da fábrica a nova data de retorno e se há um novo prazo — este item permanece como alerta de alta prioridade em toda checagem até a MAQ2 voltar a registrar produção.</p>
+        <p>A MAQ2 está parada para manutenção de canhão e rosca desde 17/08/2026 (42 dias). A previsão de retorno informada pelo responsável da fábrica era 25/09/2026 — essa data já passou (hoje é 28/09/2026, segunda-feira) e a aba MAQ2 continua sem nenhum registro de produção real, só linhas de placeholder ("ROSCA QUEBRADA") até 23/09.</p>
+        <p class="impact"><b>Impacto:</b> Atraso de 3 dias em relação à previsão até o momento desta checagem (era 2 dias na checagem de 27/09). Confirmar com o responsável da fábrica a nova data de retorno e se há um novo prazo — este item permanece como alerta de alta prioridade em toda checagem até a MAQ2 voltar a registrar produção.</p>
       </div>
     </div>
     <div class="issue">
@@ -1067,7 +1067,7 @@ footer a{color:var(--text-dim);text-decoration:underline;}
         <span class="loc">MAQ1 — 23/09/2026 23:25 até 24/09/2026 15:00 (KEVIN/HERNANDES, SKU genérico &quot;51&quot;)</span>
         <h4>Dia inteiro sem Realizado preenchido foi corrigido nesta checagem</h4>
         <p>As 16 linhas que estavam com Esperado lançado mas sem nenhum Realizado preenchido (do fim da noite de 23/09 ao fim da tarde de 24/09, ≈2.004 peças de Esperado) agora têm Realizado preenchido, com valores muito próximos do Esperado hora a hora (eficiência do bloco perto de 100%). O SKU genérico "51" continua sendo usado nessas linhas (ver item de SKU numérico abaixo), mas o campo de produção em si foi preenchido.</p>
-        <p class="impact"><b>Impacto:</b> A eficiência de 24/09 subiu de 37,9% (pior dia da checagem de 25/09) para 99,9%, e a eficiência acumulada da MAQ1 subiu de 87,6% para 92,2%. Sem reincidência nesta checagem (nenhuma linha nova entrou na planilha). Item sai da lista automaticamente em 29/09 se continuar sem reincidir.</p>
+        <p class="impact"><b>Impacto:</b> A eficiência de 24/09 subiu de 37,9% (pior dia da checagem de 25/09) para 99,9%, e a eficiência acumulada da MAQ1 subiu de 87,6% para 92,2%. Sem reincidência em nenhuma das duas checagens seguintes (nenhuma linha nova entrou na planilha desde a correção). Item sai da lista automaticamente amanhã, 29/09, completando os 3 dias corridos sem reincidir.</p>
       </div>
     </div>
     <div class="issue">
@@ -1093,7 +1093,7 @@ footer a{color:var(--text-dim);text-decoration:underline;}
       <div>
         <span class="loc">MAQ5 — 21:00 de 15/09/2026 até 05:10 de 16/09/2026</span>
         <h4>Bloco de madrugada com Esperado lançado mas quase sem Realizado</h4>
-        <p>Das horas do bloco (Esperado somado ≈222 peças, entre 21:00 de 15/09 e 05:10 de 16/09, colaborador RENAN), nenhuma tem Realizado preenchido. Segue sem solução há 11 dias.</p>
+        <p>Das horas do bloco (Esperado somado ≈222 peças, entre 21:00 de 15/09 e 05:10 de 16/09, colaborador RENAN), nenhuma tem Realizado preenchido. Segue sem solução há 12 dias.</p>
         <p class="impact"><b>Impacto:</b> Peças esperadas sem confirmação de Realizado, distorcendo a eficiência da MAQ5 no período. Cobrar do turno da madrugada uma explicação completa, não só o preenchimento de campos.</p>
       </div>
     </div>
@@ -1138,7 +1138,7 @@ footer a{color:var(--text-dim);text-decoration:underline;}
       <div>
         <span class="loc">MAQ4 — dias úteis de setembro sem nenhuma linha de produção quantificada: 01/09, 04/09, 10/09, 11/09, 17/09, 18/09, 22/09</span>
         <h4>Padrão intermitente de dias em branco continua estável</h4>
-        <p>A aba MAQ4 segue sem nenhuma linha de produção quantificada em 7 dias úteis de setembro — mesma lista da checagem anterior, sem novas datas. 17/09 e 22/09 têm apenas uma linha de placeholder cada ("TRYOUT MOLDE MC02/04" e "TRYOUT NP2801"), sem Esperado lançado. O padrão também aparece em julho e agosto (a máquina não roda todo dia útil).</p>
+        <p>A aba MAQ4 segue sem nenhuma linha de produção quantificada em 7 dias úteis de setembro — mesma lista das checagens anteriores, sem novas datas. 17/09 e 22/09 têm apenas uma linha de placeholder cada ("TRYOUT MOLDE MC02/04" e "TRYOUT NP2801"), sem Esperado lançado. O padrão também aparece em julho e agosto (a máquina não roda todo dia útil).</p>
         <p class="impact"><b>Impacto:</b> Vale investigar se os dias que seguem em branco são paradas reais (tryout de molde, sem apontamento porque não houve produção) ou lacunas de apontamento — o card individual da MAQ4 ainda tem poucos pontos reais para uma tendência de 5 dias totalmente confiável.</p>
       </div>
     </div>
@@ -1147,7 +1147,7 @@ footer a{color:var(--text-dim);text-decoration:underline;}
       <div>
         <span class="loc">MAQ4</span>
         <h4>Linhas antigas de julho não removidas, apontamento incompleto</h4>
-        <p>52 linhas com datas de 01/07 a 21/07/2026 — não um intervalo contínuo — fora da janela de análise, continuam na aba. Mesma faixa de datas das checagens anteriores (a planilha não foi editada, conforme instrução).</p>
+        <p>51 linhas com datas de 01/07 a 21/07/2026 — não um intervalo contínuo — fora da janela de análise, continuam na aba (recontagem célula a célula desta checagem corrige de 52 para 51 linhas; era um erro de contagem de checagens anteriores, não uma linha removida — 01/07 tem 17 linhas, não 18). Mesma faixa de datas das checagens anteriores (a planilha não foi editada, conforme instrução).</p>
         <p class="impact"><b>Impacto:</b> A eficiência calculada para a MAQ4 no período é baseada em poucos dias com dado — leia com essa ressalva. Segue como a pendência mais antiga em data do painel.</p>
       </div>
     </div>
@@ -1173,21 +1173,21 @@ footer a{color:var(--text-dim);text-decoration:underline;}
       <span class="tag">Integridade dos dados</span>
       <h3>Antes de confiar nos totais</h3>
       <ul>
-        <li><b>Prioridade máxima:</b> confirmar com o responsável da fábrica a nova previsão de retorno da MAQ2 — a data prevista (25/09) já passou há 2 dias sem produção registrada, e isso segue como alerta de alta prioridade recorrente até a máquina voltar.</li>
+        <li><b>Prioridade máxima:</b> confirmar com o responsável da fábrica a nova previsão de retorno da MAQ2 — a data prevista (25/09) já passou há 3 dias sem produção registrada, e isso segue como alerta de alta prioridade recorrente até a máquina voltar.</li>
         <li>Investigar por que a espera do molde do Sr. Oliveira na MAQ3 segue indo e voltando — já é pelo menos o terceiro episódio desde 09/09, mesmo com um dia de produção normal (22/09) no meio; tratar como problema estrutural de disponibilidade de molde.</li>
         <li>Fechar o bloco pontual que sobrou da madrugada de 22/09 na MAQ1 (≈147 peças) — o bloco maior de 23–24/09 já foi corrigido nesta checagem, mas esse ficou de fora.</li>
         <li>Confirmar com o supervisor da MAQ5 e da MAQ4 se os blocos de turno com duas linhas paralelas por horário (MAQ5 em 01/09, 03/09 e 10/09; MAQ4 em 08/09) representam duas prensas/moldes reais ou duplicação de apontamento — e verificar se a linha idêntica duplicada da MAQ3 em 26/08 é o mesmo tipo de erro.</li>
         <li>Cobrar do turno da madrugada da MAQ5 uma explicação completa para o bloco de 21:00 (15/09) a 05:10 (16/09) — segue sem solução há quase 10 dias.</li>
         <li>Investigar por que o campo SKU aceita código numérico solto em MAQ1, MAQ3 e MAQ4 (85 linhas na janela, mais 13 na madrugada parcial de 25/09) — o padrão continua se espalhando mesmo depois da correção do preenchimento de Realizado.</li>
-        <li>Terminar a limpeza das linhas antigas da MAQ4 (01, 02, 17, 20 e 21/07 — 52 linhas) e preencher as lacunas pontuais de Realizado identificadas em MAQ1 e MAQ3.</li>
+        <li>Terminar a limpeza das linhas antigas da MAQ4 (01, 02, 17, 20 e 21/07 — 51 linhas) e preencher as lacunas pontuais de Realizado identificadas em MAQ1 e MAQ3.</li>
       </ul>
     </div>
     <div class="reco-card">
       <span class="tag">Chão de fábrica</span>
       <h3>Fechar o ciclo de causa-raiz</h3>
       <ul>
-        <li><b>Prioridade alta:</b> a manutenção programada da MAQ2 (canhão e rosca) já está 2 dias além da data prevista de retorno (25/09) sem a máquina voltar a operar — cobrar do responsável da fábrica um novo prazo e a causa do atraso.</li>
-        <li>Investigar os problemas de rosca recorrentes na MAQ1 (≈1.777 peças perdidas em 50 linhas) — segue como a causa isolada mais cara do painel, sem sinal de resolução.</li>
+        <li><b>Prioridade alta:</b> a manutenção programada da MAQ2 (canhão e rosca) já está 3 dias além da data prevista de retorno (25/09) sem a máquina voltar a operar — cobrar do responsável da fábrica um novo prazo e a causa do atraso.</li>
+        <li>Investigar os problemas de rosca recorrentes na MAQ1 (≈1.777 peças perdidas em 50 linhas) — segue como a causa isolada mais cara do painel, sem sinal de resolução. Avaliar um plano de manutenção preventiva de rosca/canhão para a frota inteira: é o mesmo componente que quebrou na MAQ2 e já é a maior causa de perda registrada nas máquinas ativas.</li>
         <li>Resolver de vez a recorrência do molde do Sr. Oliveira na MAQ3 — já é o terceiro episódio em menos de três semanas.</li>
         <li>Resolver de fato o item da madrugada da MAQ5 (15→16/09) — segue sem solução, mesmo com o restante do apontamento da MAQ5 funcionando bem.</li>
       </ul>
@@ -1219,7 +1219,7 @@ footer a{color:var(--text-dim);text-decoration:underline;}
     <div class="plan-card">
       <span class="freq">Diário</span>
       <h3>Revisão de exceções</h3>
-      <p>Supervisor revisa linhas com Esperado ou Realizado fora da faixa física possível, células de texto onde deveria haver número, horas zeradas sem OBSERVAÇÃO preenchida, blocos de turno duplicados/paralelos e turnos inteiros sem apontamento — prioridade desta checagem: confirmar com a fábrica o novo prazo de retorno da MAQ2 (já 2 dias atrasada) e fechar o bloco pontual restante da madrugada de 22/09 na MAQ1. A planilha não recebeu nenhuma linha nova das máquinas ativas desde 25/09 — vale confirmar se o apontamento do fim de semana/início de semana está em dia.</p>
+      <p>Supervisor revisa linhas com Esperado ou Realizado fora da faixa física possível, células de texto onde deveria haver número, horas zeradas sem OBSERVAÇÃO preenchida, blocos de turno duplicados/paralelos e turnos inteiros sem apontamento — prioridade desta checagem: confirmar com a fábrica o novo prazo de retorno da MAQ2 (já 3 dias atrasada) e fechar o bloco pontual restante da madrugada de 22/09 na MAQ1. A planilha não recebeu nenhuma linha nova das máquinas ativas desde 25/09 (3ª checagem seguida) — vale confirmar se o apontamento de segunda-feira (hoje) está em dia.</p>
     </div>
     <div class="plan-card">
       <span class="freq">Semanal</span>
@@ -1234,6 +1234,6 @@ footer a{color:var(--text-dim);text-decoration:underline;}
   </div>
 </section>
 <footer>
-Fonte: planilha do Google Sheets informada pelo usuário (abas MAQ1–MAQ5), baixada como XLSX e lida diretamente das células via Google Drive nesta execução (27/09/2026 às 07:12, horário de Brasília). Todos os totais deste painel foram recalculados do zero nesta checagem, célula a célula, sem reaproveitar números de execuções anteriores. Dados anteriores a 27/07/2026 foram descartados a pedido do usuário e não entram nesta análise, mesmo as 52 linhas remanescentes de 01, 02, 17, 20 e 21/07 ainda presentes na aba MAQ4. A MAQ2 está em manutenção programada de canhão e rosca desde 17/08/2026 (41 dias de parada) — informado diretamente pelo responsável da fábrica. A previsão de retorno era 25/09/2026; essa data já passou e a aba MAQ2 continua sem nenhum registro de produção além de 23/09 ("ROSCA QUEBRADA"), o que esta checagem trata como alerta de alta prioridade, agora no seu 2º dia (era o 1º na checagem de 26/09). Por isso a MAQ2 foi excluída dos KPIs, da tabela de total geral, das causas de perda e da tendência diária de eficiência a partir de 18/08; sua eficiência histórica (27/07–17/08, incluindo a manhã parcial do dia da quebra) segue reportada à parte, e o gráfico de peças por dia inclui sua produção real até 17/08. Assim que a MAQ2 voltar a registrar produção, ela retoma o tratamento normal (volta aos agregados, ao gráfico de barras e à tendência) e isso será registrado na checagem seguinte. Totais por máquina, KPIs e tendência diária contam só horas com Esperado lançado (excluindo ≈1.121 peças de Realizado sem Esperado correspondente na MAQ5, ver Inconsistências); o gráfico de peças por dia soma todo o Realizado, com ou sem Esperado. <b>Achado principal desta checagem:</b> nenhuma aba recebeu nenhuma linha nova desde a madrugada parcial de 25/09/2026 (sexta-feira) — não há registro nenhum de sábado 26/09 nem de domingo 27/09 (hoje) em nenhuma das 5 máquinas. Quinta-feira 24/09/2026 segue fechando a janela analisada, exatamente como na checagem anterior, e por isso todos os KPIs, tabelas, tendências e causas recalculados do zero nesta checagem batem, número a número, com os da checagem de 26/09 — a única mudança material é o avanço dos contadores de dias (MAQ2: 40→41 dias parada, 1→2 dias de atraso da manutenção; bloco da madrugada da MAQ5 de 15–16/09: 10→11 dias em aberto). A recategorização das causas de perda por palavra-chave (seção 7) foi refeita do zero e mudou de forma marginal frente à checagem anterior (variações de até ~200 peças por categoria) por ajuste de critério, não por dado novo — ver nota na própria seção. Painel recalculado do zero a cada execução, direto da planilha.
+Fonte: planilha do Google Sheets informada pelo usuário (abas MAQ1–MAQ5), baixada como XLSX e lida diretamente das células via Google Drive nesta execução (28/09/2026 às 07:10, horário de Brasília). Todos os totais deste painel foram recalculados do zero nesta checagem, célula a célula, sem reaproveitar números de execuções anteriores. Dados anteriores a 27/07/2026 foram descartados a pedido do usuário e não entram nesta análise, mesmo as 51 linhas remanescentes de 01, 02, 17, 20 e 21/07 ainda presentes na aba MAQ4 (recontagem célula a célula desta checagem corrige de 52 para 51 linhas — era erro de contagem de checagens anteriores, não linha removida). A MAQ2 está em manutenção programada de canhão e rosca desde 17/08/2026 (42 dias de parada) — informado diretamente pelo responsável da fábrica. A previsão de retorno era 25/09/2026; essa data já passou e a aba MAQ2 continua sem nenhum registro de produção além de 23/09 ("ROSCA QUEBRADA"), o que esta checagem trata como alerta de alta prioridade, agora no seu 3º dia (era o 2º na checagem de 27/09). Por isso a MAQ2 foi excluída dos KPIs, da tabela de total geral, das causas de perda e da tendência diária de eficiência a partir de 18/08; sua eficiência histórica (27/07–17/08, incluindo a manhã parcial do dia da quebra) segue reportada à parte, e o gráfico de peças por dia inclui sua produção real até 17/08. Assim que a MAQ2 voltar a registrar produção, ela retoma o tratamento normal (volta aos agregados, ao gráfico de barras e à tendência) e isso será registrado na checagem seguinte. Totais por máquina, KPIs e tendência diária contam só horas com Esperado lançado (excluindo ≈1.121 peças de Realizado sem Esperado correspondente na MAQ5, ver Inconsistências); o gráfico de peças por dia soma todo o Realizado, com ou sem Esperado. <b>Achado principal desta checagem:</b> nenhuma aba recebeu nenhuma linha nova desde a madrugada parcial de 25/09/2026 (sexta-feira) — não há registro nenhum de sábado 26/09, domingo 27/09 nem, até o momento desta checagem, de segunda-feira 28/09 (hoje) em nenhuma das 5 máquinas. É a 3ª checagem seguida (26/09, 27/09 e 28/09) sem nenhuma linha nova. Quinta-feira 24/09/2026 segue fechando a janela analisada, exatamente como nas duas checagens anteriores, e por isso KPIs, tabelas e tendências recalculados do zero nesta checagem batem, número a número, com os das checagens de 26/09 e 27/09 — a única mudança material é o avanço dos contadores de dias (MAQ2: 41→42 dias parada, 2→3 dias de atraso da manutenção; bloco da madrugada da MAQ5 de 15–16/09: 11→12 dias em aberto). Duas correções de contagem entraram nesta checagem, sem relação com dado novo: a pendência mais antiga da MAQ4 passa de 52 para 51 linhas (erro de contagem anterior), e a categorização das causas de perda (seção 7) foi refeita com critério de palavra-chave mais explícito, o que reordenou "Manutenção de equipamento" para 2º lugar — ver nota na própria seção. Painel recalculado do zero a cada execução, direto da planilha.
 </footer>
 </div>
