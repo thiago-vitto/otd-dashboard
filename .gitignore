@@ -1,0 +1,12 @@
+# Scratch/intermediate files for the daily OTD dashboard pipeline (scheduled routine).
+# These are downloaded/decoded/generated on each run and are not source to track here;
+# the pipeline's real outputs are published via the Artifact tool and a separate
+# GitHub Pages checkout (repo_pages/), not committed to this branch.
+generate_dashboard.pl
+dashboard_template.html
+dashboard_otd.generated.html
+relatorio.csv
+relatorio_b64.txt
+workbook.xlsx
+xlsx_extract/
+repo_pages/
