@@ -153,7 +153,7 @@
     </div>
     <div class='meta-line'>
       Fonte: <strong>Produtividade Selagem</strong> (Google Sheets)<br>
-      Painel atualizado em: <strong>10/10/2026 07:14</strong><br>
+      Painel atualizado em: <strong>11/10/2026 07:14</strong><br>
       Dados da planilha até: <strong>09/10/2026</strong> · visão <strong>mensal</strong>
     </div>
   </header>
@@ -176,7 +176,7 @@
       <div class='kpi'>
         <div class='label'>Refugo do mês</div>
         <div class='value'>0</div>
-        <div class='sub'>Refugo = 0 em 6 dos 7 dias úteis lançados em outubro; 09/10 (Seladora 1) veio com o campo Refugo em branco e foi somado como 0 neste painel — 08/10, que estava em branco na execução anterior, já aparece corrigido para 0 nesta leitura</div>
+        <div class='sub'>Refugo = 0 em 6 dos 7 dias úteis lançados em outubro; 09/10 (Seladora 1) continua com o campo Refugo em branco na aba Controle e foi somado como 0 neste painel — sem novos lançamentos na planilha desde a execução anterior (09/10 continua sendo o último dia lançado)</div>
         <span class='pill warn'>1 campo em branco no mês</span>
       </div>
       <div class='kpi'>
@@ -246,15 +246,15 @@
       <span class='sev alta'>Aberta</span>
       <div>
         <h3>Seladora 3 sem lançamento em 05/10, 06/10, 07/10, 08/10 e 09/10 — 5 dias úteis seguidos sem registro</h3>
-        <p>Depois de lançar normalmente em 01/10 e 02/10, Seladora 3 ficou sem nenhuma linha na aba Controle nem na aba Dados em 05/10, 06/10, 07/10, 08/10 e agora também em 09/10 — o 13º dia útil sem lançamento desde agosto (depois de 12/08, 14/08, 18/08, 10/09, 21/09, 22/09, 23/09 e 28/09, e da sequência que já vinha crescendo desde 05/10 nas execuções anteriores). São 13 dias úteis sem lançamento em 52 dias úteis com Seladora 1 ativa desde o início dos dados (cerca de 1 em cada 4) — a sequência cresceu de 4 para 5 dias seguidos parados desde a última execução.</p>
+        <p>Depois de lançar normalmente em 01/10 e 02/10, Seladora 3 ficou sem nenhuma linha na aba Controle nem na aba Dados em 05/10, 06/10, 07/10, 08/10 e 09/10 — o último dia lançado na planilha continua sendo 09/10, sem novos lançamentos desde a execução anterior. São 13 dias úteis sem lançamento em 52 dias úteis com Seladora 1 ativa desde o início dos dados (cerca de 1 em cada 4), contando também 12/08, 14/08, 18/08, 10/09, 21/09, 22/09, 23/09 e 28/09. A situação permanece sem alteração desde a última leitura deste painel.</p>
       </div>
     </div>
 
     <div class='issue'>
       <span class='sev media'>Aberta</span>
       <div>
-        <h3>Campo Refugo em branco de novo — 09/10 (Seladora 1)</h3>
-        <p>O lançamento de 08/10, que esta rotina havia encontrado em branco na execução anterior, já aparece corrigido para 0 na leitura de hoje — mas o de 09/10 (Seladora 1) voltou a ficar com o campo Refugo em branco na aba Controle, o mesmo padrão intermitente do caso isolado de 07/08 (Seladora 1), que continua sem correção no histórico. Para os totais deste painel, o campo em branco de 09/10 foi somado como 0, então o Refugo real do mês pode estar subestimado.</p>
+        <h3>Campo Refugo em branco — 09/10 (Seladora 1)</h3>
+        <p>O lançamento de 09/10 (Seladora 1), último dia registrado na aba Controle, está com o campo Refugo em branco — o mesmo padrão intermitente do caso isolado de 07/08 (Seladora 1), que continua sem correção no histórico. Para os totais deste painel, o campo em branco de 09/10 foi somado como 0, então o Refugo real do mês pode estar subestimado.</p>
       </div>
     </div>
 
@@ -301,7 +301,7 @@
         <div class='plan-head'><h3>2. Bloquear salvar linha com Refugo em branco</h3><span class='plan-tag'>Governança</span></div>
         <div class='fields'>
           <div class='field'><div class='k'>O quê</div><div class='v'>Validação de dados impedindo salvar linha na aba Controle sem valor em Refugo</div></div>
-          <div class='field'><div class='k'>Por quê</div><div class='v'>O campo já ficou em branco em 08/10 (corrigido depois) e voltou a ficar em branco em 09/10 — além do caso ainda não corrigido de 07/08. É um padrão intermitente, não um caso isolado. Uma trava na própria planilha evita que o campo fique sem preenchimento, em vez de depender de correção manual posterior</div></div>
+          <div class='field'><div class='k'>Por quê</div><div class='v'>O campo está em branco em 09/10 (último dia lançado) e também no caso ainda não corrigido de 07/08. É um padrão intermitente, não um caso isolado. Uma trava na própria planilha evita que o campo fique sem preenchimento, em vez de depender de correção manual posterior</div></div>
           <div class='field'><div class='k'>Como</div><div class='v'>Validação de dados do Google Sheets na coluna Refugo, com padrão 0</div></div>
           <div class='field'><div class='k'>Quem</div><div class='v'>Líderes de turno</div></div>
           <div class='field'><div class='k'>Quando</div><div class='v'>Imediato — a partir do próximo lançamento</div></div>
@@ -312,7 +312,7 @@
         <div class='plan-head'><h3>3. Reforçar o checklist de lançamento diário das duas seladoras ativas (1 e 3)</h3><span class='plan-tag'>Processo</span></div>
         <div class='fields'>
           <div class='field'><div class='k'>O quê</div><div class='v'>Checklist de fechamento do turno Manhã: lançar uma linha por seladora ativa todo dia útil, mesmo com produção zero. Seladora 2 fica fora do checklist por ser backup</div></div>
-          <div class='field'><div class='k'>Por quê</div><div class='v'>Seladora 3 lançou normalmente em 01/10 e 02/10, mas já soma 5 dias úteis seguidos sem registro (05/10, 06/10, 07/10, 08/10 e 09/10) — o 13º dia útil sem lançamento desde agosto, em 52 dias úteis com Seladora 1 ativa (cerca de 1 em cada 4). A sequência parada cresceu de 4 para 5 dias desde a execução anterior — o padrão intermitente não foi resolvido, e o checklist ajuda a consolidar o lançamento todo dia útil, não apenas em sequências pontuais</div></div>
+          <div class='field'><div class='k'>Por quê</div><div class='v'>Seladora 3 lançou normalmente em 01/10 e 02/10, mas já soma 5 dias úteis seguidos sem registro (05/10, 06/10, 07/10, 08/10 e 09/10) — o 13º dia útil sem lançamento desde agosto, em 52 dias úteis com Seladora 1 ativa (cerca de 1 em cada 4). O padrão intermitente não foi resolvido, e o checklist ajuda a consolidar o lançamento todo dia útil, não apenas em sequências pontuais</div></div>
           <div class='field'><div class='k'>Como</div><div class='v'>Rotina de apontamento no fim do turno, com aprovação do líder antes de fechar</div></div>
           <div class='field'><div class='k'>Quem</div><div class='v'>Líder do turno Manhã</div></div>
           <div class='field'><div class='k'>Quando</div><div class='v'>Contínuo</div></div>
@@ -354,5 +354,5 @@
     </div>
   </section>
 
-  <footer>PRODUTIVIDADE SELAGEM · VISÃO MENSAL · ATUALIZADO AUTOMATICAMENTE TODOS OS DIAS ÀS 07:00 · PAINEL POSTADO EM: 10/10/2026 07:14</footer>
+  <footer>PRODUTIVIDADE SELAGEM · VISÃO MENSAL · ATUALIZADO AUTOMATICAMENTE TODOS OS DIAS ÀS 07:00 · PAINEL POSTADO EM: 11/10/2026 07:14</footer>
 </div>
