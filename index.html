@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <title>Dashboard OTD — Expedição</title>
 <style>
   .viz-root {
@@ -153,7 +154,12 @@
   .viz-root .table-scroll { overflow-x: auto; }
   .viz-root table { width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 720px; }
   .viz-root th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); font-weight: 700; padding: 0 10px 8px; border-bottom: 1px solid var(--border); }
-  .viz-root td { padding: 10px 10px; border-bottom: 1px solid var(--grid); vertical-align: top; }
+  /* Cor explicita nas celulas: num documento sem doctype o navegador entra em
+     quirks mode e tabelas NAO herdam a cor do ancestral, caindo no preto padrao
+     e sumindo no fundo escuro. O doctype acima resolve; isto e a garantia. */
+  .viz-root table { color: var(--ink); }
+  .viz-root td { padding: 10px 10px; border-bottom: 1px solid var(--grid); vertical-align: top; color: var(--ink); }
+  .viz-root td b, .viz-root td strong { color: var(--ink); }
   .viz-root tr:last-child td { border-bottom: none; }
   .viz-root td.num { font-variant-numeric: tabular-nums; color: var(--muted); width: 24px; }
   .viz-root .chip { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
@@ -180,6 +186,12 @@
 
   .viz-root footer { font-size: 11px; color: var(--muted); border-top: 1px solid var(--border); padding-top: 16px; }
 
+  .viz-root code {
+    color: var(--ink);
+    background: color-mix(in srgb, var(--muted) 18%, transparent);
+    padding: 1px 5px; border-radius: 4px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9em;
+  }
   .viz-root a { color: var(--accent); }
   .viz-root :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
@@ -201,7 +213,7 @@
       <span><strong>Período coberto:</strong> Novembro/2026</span>
       <span><strong>Dias de expedição analisados:</strong> 6</span>
       <span><strong>Fonte:</strong> planilha "Meta Expedição Supervisão"</span>
-      <span><strong>Última atualização:</strong> 2026-11-09 16:45</span>
+      <span><strong>Última atualização:</strong> 2026-11-09 16:50</span>
     </div>
     
   </header>
@@ -271,6 +283,14 @@
     </div>
   </section>
 
+  <section class="setores">
+    <div class="section-head">
+      <h2>Setores que travam o faturamento</h2>
+      <span class="hint">12 pedidos em aberto &#183; 697 peças pendentes de entrega à expedição</span>
+    </div>
+    <div class="kpis" style="margin-bottom:14px"><div class="card kpi"><div class="label">Setor que mais trava</div><div class="value" style="font-size:21px;line-height:1.2">Injeção</div><div class="sub">47,9% das peças que faltam</div></div><div class="card kpi"><div class="label">Peças faltando</div><div class="value">334</div><div class="sub">só de Injeção</div></div><div class="card kpi"><div class="label">Total pendente</div><div class="value">697</div><div class="sub">somando todos os setores</div></div><div class="card kpi"><div class="label">Pedidos travados</div><div class="value">12</div><div class="sub">aguardando peças para faturar</div></div></div><div class="card chart-card"><h3>Peças que faltam, por setor</h3><div class="chart-sub">Quanto cada setor ainda precisa entregar à expedição para liberar o faturamento</div><svg viewBox="0 0 640 116" role="img" aria-label="Pecas que faltam por setor"><g class="bar-row" data-tip="Injeção &#183; 334 pecas em 9 pedido(s) &#183; 47,9% do total"><text x="0" y="21" class="row-label">Injeção</text><rect x="190" y="6" width="355.0" height="22" rx="3" fill="var(--critical)"></rect><text x="553" y="21" class="axis-label" style="font-weight:700">334 peças &#183; 47,9%</text></g><g class="bar-row" data-tip="Mang. arrefecimento &#183; 303 pecas em 5 pedido(s) &#183; 43,5% do total"><text x="0" y="57" class="row-label">Mang. arrefecimento</text><rect x="190" y="42" width="322.1" height="22" rx="3" fill="var(--serious)"></rect><text x="520.1" y="57" class="axis-label" style="font-weight:700">303 peças &#183; 43,5%</text></g><g class="bar-row" data-tip="ferramentaria/terceerizado &#183; 60 pecas em 1 pedido(s) &#183; 8,6% do total"><text x="0" y="93" class="row-label">ferramentaria/terceerizado</text><rect x="190" y="78" width="63.8" height="22" rx="3" fill="var(--warning)"></rect><text x="261.8" y="93" class="axis-label" style="font-weight:700">60 peças &#183; 8,6%</text></g></svg></div><div class="card causa" style="margin-top:14px"><span class="stripe" style="background:var(--critical)"></span><div class="area">Leitura</div><p class="problema"><b>Injeção</b> responde por 47,9% das peças pendentes (334 de 697), em 9 dos 12 pedidos travados. É o setor a atacar primeiro.</p><p class="evidencia">Injeção: 334 peças em 9 pedido(s) &#183; Mang. arrefecimento: 303 peças em 5 pedido(s) &#183; ferramentaria/terceerizado: 60 peças em 1 pedido(s)</p><p class="causa-raiz">Contabiliza apenas observações no formato <code>Setor: quantidade</code> em pedidos ainda não faturados. Observações em texto livre (ex: <code>Peças faltantes na expedição TR-506/40</code>) não entram na conta — padronizar a escrita aumenta a cobertura deste quadro.</p></div>
+  </section>
+
   <section class="logistica">
     <div class="section-head">
       <h2>Logística e custo de transporte</h2>
@@ -301,7 +321,7 @@
     </div>
 
     <div class="card table-scroll" style="margin-top:14px">
-      <table><thead><tr><th>Mês</th><th>Peças expedidas</th><th>Gasto transporte</th><th>Custo/peça</th><th>Volumes</th><th>Custo/volume</th><th>Peças/volume</th></tr></thead><tbody><tr><td><b>Setembro</b></td><td>35.863</td><td>R$ 3.791,28</td><td><b>R$ 0,106</b></td><td>645</td><td>R$ 5,88</td><td>56</td></tr><tr><td><b>Outubro</b></td><td>41.366</td><td>R$ 5.803,54</td><td><b>R$ 0,140</b></td><td>1.015</td><td>R$ 5,72</td><td>41</td></tr><tr><td><b>Novembro</b></td><td>7.551</td><td>R$ 832,06</td><td><b>R$ 0,110</b></td><td>65</td><td>R$ 12,80</td><td>116</td></tr></tbody></table>
+      <table><thead><tr><th>Mês</th><th>Peças expedidas</th><th>Gasto transporte</th><th>Custo/peça</th><th>Volumes</th><th>Custo/volume</th><th>Peças/volume</th></tr></thead><tbody><tr><td><b>Setembro</b></td><td>35.863</td><td>R$ 3.791,28</td><td><b>R$ 0,106</b></td><td>646</td><td>R$ 5,87</td><td>56</td></tr><tr><td><b>Outubro</b></td><td>41.366</td><td>R$ 5.803,54</td><td><b>R$ 0,140</b></td><td>1.028</td><td>R$ 5,65</td><td>40</td></tr><tr><td><b>Novembro</b></td><td>7.551</td><td>R$ 832,06</td><td><b>R$ 0,110</b></td><td>65</td><td>R$ 12,80</td><td>116</td></tr></tbody></table>
     </div>
 
     <div class="causas-grid" style="margin-top:14px">
@@ -442,7 +462,7 @@
   </section>
 
   <footer>
-    Dados extraídos automaticamente da planilha "Meta Expedição Supervisão" (Google Sheets), abas Relatório e Metas — atualizado todos os dias às 07h. Última atualização: 2026-11-09 16:45. Causas raiz e plano de ação refletem a análise mais recente; percentuais citados neles são recalculados a cada atualização. Percentuais de OTD calculados sobre pedidos com faixa de prazo apontada (mês com menos de 10 pedidos apontados é ignorado no gráfico).
+    Dados extraídos automaticamente da planilha "Meta Expedição Supervisão" (Google Sheets), abas Relatório e Metas — atualizado todos os dias às 07h. Última atualização: 2026-11-09 16:50. Causas raiz e plano de ação refletem a análise mais recente; percentuais citados neles são recalculados a cada atualização. Percentuais de OTD calculados sobre pedidos com faixa de prazo apontada (mês com menos de 10 pedidos apontados é ignorado no gráfico).
   </footer>
 
 </div>
